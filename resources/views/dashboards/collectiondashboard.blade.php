@@ -28,8 +28,8 @@
             </div>
             <div class="project-info-progress">
                 <div class="row clearfix">
-                    <div class="col-sm-6 text-muted weight-500">Review</div>
-                    <div class="col-sm-6 text-right weight-500 font-14 text-muted">Good</div>
+                    {{-- <div class="col-sm-6 text-muted weight-500">Review</div> --}}
+                    <div class="col-sm-6 text-right weight-500 font-14 text-muted">1/100</div>
                 </div>
                 <div class="progress" style="height: 10px;">
                     <div class="progress-bar bg-light-orange progress-bar-striped progress-bar-animated" role="progressbar" style="width: 80%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -46,14 +46,14 @@
                     </div>
                 </div>
                 <div class="project-info-right">
-                    <span class="no text-blue weight-500 font-24">40</span>
-                    <p class="weight-400 font-18">On Progress</p>
+                    <span class="no text-blue weight-500 font-24">40/60</span>
+                    {{-- <p class="weight-400 font-18">On Progress</p> --}}
                 </div>
             </div>
             <div class="project-info-progress">
                 <div class="row clearfix">
-                    <div class="col-sm-6 text-muted weight-500">Target</div>
-                    <div class="col-sm-6 text-right weight-500 font-14 text-muted">40</div>
+                    {{-- <div class="col-sm-6 text-muted weight-500">Target</div> --}}
+                    <div class="col-sm-6 text-right weight-500 font-14 text-muted">40/90</div>
                 </div>
                 <div class="progress" style="height: 10px;">
                     <div class="progress-bar bg-blue progress-bar-striped progress-bar-animated" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -76,8 +76,8 @@
             </div>
             <div class="project-info-progress">
                 <div class="row clearfix">
-                    <div class="col-sm-6 text-muted weight-500">Unattended</div>
-                    <div class="col-sm-6 text-right weight-500 font-14 text-muted">50</div>
+                    {{-- <div class="col-sm-6 text-muted weight-500">Unattended</div> --}}
+                    <div class="col-sm-6 text-right weight-500 font-14 text-muted">50/90</div>
                 </div>
                 <div class="progress" style="height: 10px;">
                     <div class="progress-bar bg-light-green progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -102,7 +102,7 @@
             <div class="project-info-progress">
                 <div class="row clearfix">
                     <div class="col-sm-6 text-muted weight-500">Review</div>
-                    <div class="col-sm-6 text-right weight-500 font-14 text-muted">Average</div>
+                    <div class="col-sm-6 text-right weight-500 font-14 text-muted">89/100</div>
                 </div>
                 <div class="progress" style="height: 10px;">
                     <div class="progress-bar bg-light-purple progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -113,3 +113,97 @@
 </div>
 
 {{-- ./  --}}
+
+
+{{-- Start of collection dashboard --}}
+<div>
+    <div class="card mb-grid ">
+        <div class="card-header">
+            <ul class="nav nav-pills card-header-pills" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="card-tab-6" data-toggle="tab" href="#card-tab-content-6"
+                        role="tab" aria-controls="card-tab-content-6" aria-selected="true">Charts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " id="card-tab-1" data-toggle="tab" href="#card-tab-content-1"
+                        role="tab" aria-controls="card-tab-content-1" aria-selected="true">Prospects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-2" role="tab"
+                        aria-controls="card-tab-1" aria-selected="false">Customers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-5" role="tab"
+                        aria-controls="card-tab-1" aria-selected="false">Follow Ups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-4" role="tab"
+                        aria-controls="card-tab-1" aria-selected="false">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-3"
+                        role="tab" aria-controls="card-tab-2" aria-selected="false">Reports</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+
+
+                {{-- For Charts --}}
+                <div class="tab-pane fade show active" id="card-tab-content-6" role="tabpanel" aria-labelledby="card-tab-6">
+                    <h4 class="card-title">Statistics</h4>
+
+                    {{-- Start of Charts --}}
+                    {{-- @include('sales.charts') --}}
+                    {{-- ./ --}}
+                </div>
+                {{-- ./ --}}
+
+                {{-- For Prospects --}}
+                <div class="tab-pane fade" id="card-tab-content-1" role="tabpanel"
+                    aria-labelledby="card-tab-1">
+                    {{-- Start of Prospects --}}
+                    @include('sales.prospects')
+                    {{-- ./ --}}
+                </div>
+                {{-- ./ --}}
+
+                {{-- For Customers --}}
+                <div class="tab-pane fade" id="card-tab-content-2" role="tabpanel" aria-labelledby="card-tab-2">
+                      {{-- Start of Customers --}}
+                      @include('sales.customers')
+                      {{-- ./ --}}
+                </div>
+                {{-- For Reports --}}
+
+                {{-- For products --}}
+                <div class="tab-pane fade" id="card-tab-content-4" role="tabpanel" aria-labelledby="card-tab-2">
+                   {{-- Start of Products --}}
+                   @include('sales.products')
+                   {{-- ./ --}}
+                </div>
+                {{-- ./ --}}
+
+
+                {{-- For Follow ups --}}
+                <div class="tab-pane fade" id="card-tab-content-5" role="tabpanel" aria-labelledby="card-tab-2">
+                {{-- Start of Followup --}}
+                @include('sales.followup')
+                {{-- ./ --}}
+                </div>
+
+                {{-- ./ --}}
+
+
+                <div class="tab-pane fade" id="card-tab-content-3" role="tabpanel" aria-labelledby="card-tab-3">
+                    <h4 class="card-title">Reports</h4>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{{-- ./ --}}

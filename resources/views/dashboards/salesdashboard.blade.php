@@ -76,6 +76,7 @@
 </div>
 {{-- ./ --}}
 
+{{-- start of tabs section --}}
 <div>
     <div class="card mb-grid ">
         <div class="card-header">
@@ -165,3 +166,4 @@
     </div>
 
 </div>
+{{-- ./ --}}
