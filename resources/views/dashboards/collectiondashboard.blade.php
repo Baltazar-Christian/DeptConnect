@@ -47,7 +47,7 @@
                 </div>
                 <div class="project-info-right">
                     <span class="no text-blue weight-500 font-24">40/60</span>
-                    {{-- <p class="weight-400 font-18">On Progress</p> --}}
+                    <p class="weight-400 font-18">On Progress</p>
                 </div>
             </div>
             <div class="project-info-progress">
