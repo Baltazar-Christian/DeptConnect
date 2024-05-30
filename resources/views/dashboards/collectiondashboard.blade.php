@@ -23,7 +23,7 @@
                 </div>
                 <div class="project-info-right">
                     <span class="no text-blue weight-500 font-24">40</span>
-                    <p class="weight-400 font-18">My Earnings</p>
+                    <p class="weight-400 font-18">On Progress</p>
                 </div>
             </div>
             <div class="project-info-progress">
@@ -47,12 +47,12 @@
                 </div>
                 <div class="project-info-right">
                     <span class="no text-light-green weight-500 font-24">50</span>
-                    <p class="weight-400 font-18">Business Captured</p>
+                    <p class="weight-400 font-18"> Completed</p>
                 </div>
             </div>
             <div class="project-info-progress">
                 <div class="row clearfix">
-                    <div class="col-sm-6 text-muted weight-500">Target</div>
+                    <div class="col-sm-6 text-muted weight-500">Unattended</div>
                     <div class="col-sm-6 text-right weight-500 font-14 text-muted">50</div>
                 </div>
                 <div class="progress" style="height: 10px;">
@@ -70,8 +70,8 @@
                     </div>
                 </div>
                 <div class="project-info-right">
-                    <span class="no text-light-orange weight-500 font-24">2 Lakhs</span>
-                    <p class="weight-400 font-18">Projects Complete</p>
+                    <span class="no text-light-orange weight-500 font-24">2 Tsh</span>
+                    <p class="weight-400 font-18">Pending</p>
                 </div>
             </div>
             <div class="project-info-progress">
@@ -94,8 +94,8 @@
                     </div>
                 </div>
                 <div class="project-info-right">
-                    <span class="no text-light-purple weight-500 font-24">5.1 Lakhs</span>
-                    <p class="weight-400 font-18">Pending Business</p>
+                    <span class="no text-light-purple weight-500 font-24">5.1 Tsh</span>
+                    <p class="weight-400 font-18">Cutomers</p>
                 </div>
             </div>
             <div class="project-info-progress">
