@@ -115,7 +115,7 @@
                     <h4 class="card-title">Statistics</h4>
 
                     {{-- Start of Charts --}}
-                    @include('sales.charts')
+                    {{-- @include('sales.charts') --}}
                     {{-- ./ --}}
                 </div>
                 {{-- ./ --}}

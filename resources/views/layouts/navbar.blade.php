@@ -10,17 +10,17 @@ use Carbon\Carbon;
 
     <p class="form-inline  d-none d-md-block mx-auto">
         <span class="navbar-text ml-auto">
-            <i class="fa fa-calendar-alt"></i> Today is {{ Carbon\Carbon::now()->format('F j, Y, g:i A') }}
+            <i class="fa fa-clock text-info"></i> Today is {{ Carbon::now()->format('F j, Y, g:i A') }}
         </span>
     </p>
 
 
 
-    <div class="d-flex flex-1 d-block d-md-none">
+    {{-- <div class="d-flex flex-1 d-block d-md-none">
       <a href="#" class="sidebar-toggle ml-3">
         <i data-feather="menu"></i>
       </a>
-    </div>
+    </div> --}}
 
     <ul class="navbar-nav d-flex justify-content-end mr-2">
       <!-- Notificatoins -->
