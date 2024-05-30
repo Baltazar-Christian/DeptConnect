@@ -81,7 +81,7 @@
         <div class="card-header">
             <ul class="nav nav-pills card-header-pills" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="card-tab-1" data-toggle="tab" href="#card-tab-content-1"
+                    <a class="nav-link active" id="card-tab-6" data-toggle="tab" href="#card-tab-content-6"
                         role="tab" aria-controls="card-tab-content-6" aria-selected="true">Charts</a>
                 </li>
                 <li class="nav-item">
@@ -111,7 +111,7 @@
 
 
                 {{-- For Charts --}}
-                <div class="tab-pane fade show active" id="card-tab-content-6" role="tabpanel" aria-labelledby="card-tab-2">
+                <div class="tab-pane fade show active" id="card-tab-content-6" role="tabpanel" aria-labelledby="card-tab-6">
                     <h4 class="card-title">Statistics</h4>
 
                     {{-- Start of Charts --}}

@@ -4,7 +4,24 @@
     <title>DepConnect | @yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap core CSS     -->
+    {{-- <link href="assets/css/bootstrap.min.css" rel="stylesheet" /> --}}
 
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="  {{  asset('dist/css/adminx.css') }} " media="screen" />
 
   </head>
@@ -46,12 +63,46 @@
       </div>
     </div>
 
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <nav class="pull-left">
+                <ul>
+                    <li>
+                        <a href="#">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Company
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Portfolio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                           Blog
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <p class="copyright pull-right">
+                &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">TazarChriss</a>
+
     <!-- If you prefer jQuery these are the required scripts -->
+       	<!--  Charts Plugin -->
+	<script src="{{ asset('assets/js/chartist.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
     <script src=" {{ asset('dist/js/vendor.js') }} "></script>
     <script src=" {{ asset('dist/js/adminx.js') }}"></script>
+
+
 
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
