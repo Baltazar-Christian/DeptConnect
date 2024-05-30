@@ -52,5 +52,26 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
     <script src=" {{ asset('dist/js/vendor.js') }} "></script>
     <script src=" {{ asset('dist/js/adminx.js') }}"></script>
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var table = $('[data-table]').DataTable({
+          "columns": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "orderable": false }
+          ]
+        });
+
+        /* $('.form-control-search').keyup(function(){
+          table.search($(this).val()).draw() ;
+        }); */
+      });
+    </script>
   </body>
 </html>

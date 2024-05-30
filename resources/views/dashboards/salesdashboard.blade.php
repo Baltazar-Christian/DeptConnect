@@ -5,7 +5,7 @@
             <div class="card-body d-flex flex-column">
                 <div class="d-flex justify-content-between mb-3">
                     <h5 class="card-title mb-0">
-                        Successful Prospects
+                       Closed Sales
                     </h5>
 
                     <div class="card-title-sub">
