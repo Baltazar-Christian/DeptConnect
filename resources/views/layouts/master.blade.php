@@ -102,7 +102,11 @@
     <script src=" {{ asset('dist/js/vendor.js') }} "></script>
     <script src=" {{ asset('dist/js/adminx.js') }}"></script>
 
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+	<script src="{{ asset('assets/js/light-bootstrap-dashboard.js?v=1.4.0') }}"></script>
 
+	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+	<script src="{{ asset('assets/js/demo.js') }}"></script>
 
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
