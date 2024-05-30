@@ -107,7 +107,7 @@
       <a class="nav-link avatar-with-name" href="{{ route('logout') }}"
       onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-     <i class="oi oi-person display-inline-block "></i>
+     <i class="oi oi-account-logout display-inline-block "></i>
      Logout
    </a>
 
