@@ -42,7 +42,7 @@
             <div class="project-info clearfix">
                 <div class="project-info-left">
                     <div class="icon box-shadow bg-blue text-white">
-                        <i class="fa fa-briefcase"></i>
+                        <i class="fa fa-clipboard"></i>
                     </div>
                 </div>
                 <div class="project-info-right">
@@ -91,7 +91,7 @@
             <div class="project-info clearfix">
                 <div class="project-info-left">
                     <div class="icon box-shadow bg-light-purple text-white">
-                        <i class="fa fa-podcast"></i>
+                        <i class="fa fa-users"></i>
                     </div>
                 </div>
                 <div class="project-info-right">
