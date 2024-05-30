@@ -131,9 +131,9 @@
 
                 {{-- For Customers --}}
                 <div class="tab-pane fade" id="card-tab-content-2" role="tabpanel" aria-labelledby="card-tab-2">
-                    <h4 class="card-title">Customers</h4>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                      {{-- Start of Customers --}}
+                      @include('sales.customers')
+                      {{-- ./ --}}
                 </div>
                 {{-- For Reports --}}
 

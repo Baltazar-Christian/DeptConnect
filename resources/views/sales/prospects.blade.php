@@ -35,7 +35,7 @@
 <div class="col-md-4">
     <div class="card">
              <div class="card-header">
-            <div class="card-header-title"> <i class="io io-list" ></i> Add Pospect Form </div>
+            <div class="card-header-title"> <i class="io io-list" ></i> New Pospect Form </div>
             </div>
         <div class="card-body">
         <form>
