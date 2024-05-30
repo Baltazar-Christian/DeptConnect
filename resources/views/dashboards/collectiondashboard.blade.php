@@ -133,11 +133,11 @@
                         aria-controls="card-tab-1" aria-selected="false">Pending Collections</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-5" role="tab"
+                    <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-4" role="tab"
                         aria-controls="card-tab-1" aria-selected="false">Closed Collections</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-4" role="tab"
+                    <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-5" role="tab"
                         aria-controls="card-tab-1" aria-selected="false">Follow Ups</a>
                 </li>
                 <li class="nav-item">
