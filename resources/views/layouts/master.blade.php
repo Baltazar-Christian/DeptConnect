@@ -17,17 +17,18 @@
 
 
       <!-- Sidebar -->
-        @include('layouts.leftsidebar')
+        {{-- @include('layouts.leftsidebar') --}}
       <!-- Sidebar End -->
 
       <!-- adminx-content-aside -->
-      <div class="adminx-content">
+      {{-- <div class="adminx-content"> --}}
+        <div class="">
         <!-- <div class="adminx-aside">
 
         </div> -->
 
         <div class="adminx-main-content1 m-2">
-            <div class="">
+            <div class="p-2">
                     <!-- BreadCrumb -->
                     <div class="card  p-2">
                         <nav aria-label="breadcrumb" role="navigation">

@@ -13,22 +13,22 @@ Dashboard
     $departmentName = '';
     switch(Auth::user()->department_id) {
         case 1:
-            $departmentName = "'dashboards.masterdashboard'";
+            $departmentName = 'dashboards.masterdashboard';
             break;
         case 2:
-            $departmentName = 'Sales';
+            $departmentName = 'dashboards.salesdashboard';
             break;
         case 3:
-            $departmentName = 'Collection';
+            $departmentName = 'dashboards.collectiondashboard';
             break;
         case 4:
-            $departmentName = 'Accountant';
+            $departmentName = 'dashboards.accountdashboard';
             break;
     }
 @endphp
 
-@if($departmentName!='')
-    @include($departmentName);
+@if($departmentName)
+    @include($departmentName)
 @endif
 
 

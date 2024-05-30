@@ -23,7 +23,7 @@
 
     <ul class="navbar-nav d-flex justify-content-end mr-2">
       <!-- Notificatoins -->
-      <li class="nav-item dropdown d-flex align-items-center mr-2">
+      {{-- <li class="nav-item dropdown d-flex align-items-center mr-2">
         <a class="nav-link nav-link-notifications" id="dropdownNotifications" data-toggle="dropdown" href="#">
           <i class="oi oi-bell display-inline-block align-middle"></i>
           <span class="nav-link-notification-number">3</span>
@@ -68,18 +68,39 @@
             <a href="#"><small>View all notifications</small></a>
           </div>
         </div>
-      </li>
+      </li> --}}
       <!-- Notifications -->
       <li class="nav-item dropdown">
-        <a class="nav-link avatar-with-name" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#">
-          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg" class="d-inline-block align-top" alt="">
-        </a>
+        {{-- <a class="nav-link avatar-with-name" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#">
+            <i class="oi oi-person display-inline-block align-middle"></i>
+            {{ Auth::user()->name }}
+          {{-- <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg" class="d-inline-block align-top" alt=""> --}}
+         
+        {{-- </a> --}} 
+        {{-- <a class="nav-link nav-link-notifications" id="dropdownNotifications" data-toggle="dropdown" href="#">
+            
+            <i class="oi oi-person display-inline-block align-middle"></i>  
+          </a> --}}
+  <a class="nav-link avatar-with-name" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#">
+    <i class="oi oi-person display-inline-block "></i>  
+
+            {{ Auth::user()->name }}
+          {{-- <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg" class="d-inline-block align-top" alt=""> --}}
+         
+        </a> 
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="#">My Profile</a>
-          <a class="dropdown-item" href="#">My Tasks</a>
-          <a class="dropdown-item" href="#">Settings</a>
+        
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-danger" href="#">Sign out</a>
+          <a class="dropdown-item" href="{{ route('logout') }}"
+          onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+           {{ __('Logout') }}
+       </a>
+
+       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+           @csrf
+       </form>
         </div>
       </li>
     </ul>
