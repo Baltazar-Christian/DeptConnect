@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand justify-content-between fixed-top">
     <a class="navbar-brand mb-0 h1 d-none d-md-block" href="index.html">
       <img src="./demo/img/logo.png" class="navbar-brand-image d-inline-block align-top mr-2" alt="">
-      AdminX
+      DepLink
     </a>
 
     <form class="form-inline form-quicksearch d-none d-md-block mx-auto">
@@ -75,22 +75,22 @@
             <i class="oi oi-person display-inline-block align-middle"></i>
             {{ Auth::user()->name }}
           {{-- <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg" class="d-inline-block align-top" alt=""> --}}
-         
-        {{-- </a> --}} 
+
+        {{-- </a> --}}
         {{-- <a class="nav-link nav-link-notifications" id="dropdownNotifications" data-toggle="dropdown" href="#">
-            
-            <i class="oi oi-person display-inline-block align-middle"></i>  
+
+            <i class="oi oi-person display-inline-block align-middle"></i>
           </a> --}}
   <a class="nav-link avatar-with-name" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#">
-    <i class="oi oi-person display-inline-block "></i>  
+    <i class="oi oi-person display-inline-block "></i>
 
             {{ Auth::user()->name }}
           {{-- <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg" class="d-inline-block align-top" alt=""> --}}
-         
-        </a> 
+
+        </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="#">My Profile</a>
-        
+
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="{{ route('logout') }}"
           onclick="event.preventDefault();
