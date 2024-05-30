@@ -82,6 +82,10 @@
             <ul class="nav nav-pills card-header-pills" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="card-tab-1" data-toggle="tab" href="#card-tab-content-1"
+                        role="tab" aria-controls="card-tab-content-6" aria-selected="true">Charts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " id="card-tab-1" data-toggle="tab" href="#card-tab-content-1"
                         role="tab" aria-controls="card-tab-content-1" aria-selected="true">Prospects</a>
                 </li>
                 <li class="nav-item">
@@ -104,8 +108,20 @@
         </div>
         <div class="card-body">
             <div class="tab-content">
+
+
+                {{-- For Charts --}}
+                <div class="tab-pane fade show active" id="card-tab-content-6" role="tabpanel" aria-labelledby="card-tab-2">
+                    <h4 class="card-title">Statistics</h4>
+
+                    {{-- Start of Charts --}}
+                    @include('sales.charts')
+                    {{-- ./ --}}
+                </div>
+                {{-- ./ --}}
+
                 {{-- For Prospects --}}
-                <div class="tab-pane fade show active" id="card-tab-content-1" role="tabpanel"
+                <div class="tab-pane fade" id="card-tab-content-1" role="tabpanel"
                     aria-labelledby="card-tab-1">
                     {{-- Start of Prospects --}}
                     @include('sales.prospects')
