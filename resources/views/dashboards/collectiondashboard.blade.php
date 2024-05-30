@@ -152,10 +152,10 @@
 
                 {{-- For Charts --}}
                 <div class="tab-pane fade show active" id="card-tab-content-6" role="tabpanel" aria-labelledby="card-tab-6">
-                    <h4 class="card-title">Statistics</h4>
+                    {{-- <h4 class="card-title">Statistics</h4> --}}
 
                     {{-- Start of Charts --}}
-                    {{-- @include('sales.charts') --}}
+                    @include('collections.charts')
                     {{-- ./ --}}
                 </div>
                 {{-- ./ --}}
