@@ -71,7 +71,7 @@
                 </div>
                 <div class="project-info-right">
                     <span class="no text-light-green weight-500 font-24">50</span>
-                    <p class="weight-400 font-18"> Completed</p>
+                    <p class="weight-400 font-18"> Closed</p>
                 </div>
             </div>
             <div class="project-info-progress">
@@ -164,7 +164,7 @@
                 <div class="tab-pane fade" id="card-tab-content-1" role="tabpanel"
                     aria-labelledby="card-tab-1">
                     {{-- Start of Prospects --}}
-                    @include('collections.prospects')
+                    @include('collections.all')
                     {{-- ./ --}}
                 </div>
                 {{-- ./ --}}
@@ -172,7 +172,7 @@
                 {{-- For Customers --}}
                 <div class="tab-pane fade" id="card-tab-content-2" role="tabpanel" aria-labelledby="card-tab-2">
                       {{-- Start of Customers --}}
-                      @include('collections.customers')
+                      @include('collections.pending')
                       {{-- ./ --}}
                 </div>
                 {{-- For Reports --}}
@@ -180,7 +180,7 @@
                 {{-- For products --}}
                 <div class="tab-pane fade" id="card-tab-content-4" role="tabpanel" aria-labelledby="card-tab-2">
                    {{-- Start of Products --}}
-                   @include('collections.products')
+                   @include('collections.closed')
                    {{-- ./ --}}
                 </div>
                 {{-- ./ --}}
