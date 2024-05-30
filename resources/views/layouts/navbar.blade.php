@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand justify-content-between fixed-top">
     <a class="navbar-brand mb-0 h1 d-none d-md-block" href="index.html">
-      <img src="./demo/img/logo.png" class="navbar-brand-image d-inline-block align-top mr-2" alt="">
+      <img src=" {{ asset('img/logo.png') }}" class="navbar-brand-image d-inline-block align-top mr-2" alt="">
       DepLink
     </a>
 
