@@ -126,19 +126,19 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " id="card-tab-1" data-toggle="tab" href="#card-tab-content-1"
-                        role="tab" aria-controls="card-tab-content-1" aria-selected="true">Prospects</a>
+                        role="tab" aria-controls="card-tab-content-1" aria-selected="true">All Collections</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-2" role="tab"
-                        aria-controls="card-tab-1" aria-selected="false">Customers</a>
+                        aria-controls="card-tab-1" aria-selected="false">Pending Collections</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-5" role="tab"
-                        aria-controls="card-tab-1" aria-selected="false">Follow Ups</a>
+                        aria-controls="card-tab-1" aria-selected="false">Closed Collections</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-4" role="tab"
-                        aria-controls="card-tab-1" aria-selected="false">Products</a>
+                        aria-controls="card-tab-1" aria-selected="false">Follow Ups</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-3"
@@ -164,7 +164,7 @@
                 <div class="tab-pane fade" id="card-tab-content-1" role="tabpanel"
                     aria-labelledby="card-tab-1">
                     {{-- Start of Prospects --}}
-                    @include('sales.prospects')
+                    @include('collections.prospects')
                     {{-- ./ --}}
                 </div>
                 {{-- ./ --}}
@@ -172,7 +172,7 @@
                 {{-- For Customers --}}
                 <div class="tab-pane fade" id="card-tab-content-2" role="tabpanel" aria-labelledby="card-tab-2">
                       {{-- Start of Customers --}}
-                      @include('sales.customers')
+                      @include('collections.customers')
                       {{-- ./ --}}
                 </div>
                 {{-- For Reports --}}
@@ -180,7 +180,7 @@
                 {{-- For products --}}
                 <div class="tab-pane fade" id="card-tab-content-4" role="tabpanel" aria-labelledby="card-tab-2">
                    {{-- Start of Products --}}
-                   @include('sales.products')
+                   @include('collections.products')
                    {{-- ./ --}}
                 </div>
                 {{-- ./ --}}
@@ -189,7 +189,7 @@
                 {{-- For Follow ups --}}
                 <div class="tab-pane fade" id="card-tab-content-5" role="tabpanel" aria-labelledby="card-tab-2">
                 {{-- Start of Followup --}}
-                @include('sales.followup')
+                @include('collections.followup')
                 {{-- ./ --}}
                 </div>
 
@@ -198,7 +198,7 @@
 
                 <div class="tab-pane fade" id="card-tab-content-3" role="tabpanel" aria-labelledby="card-tab-3">
                     <h4 class="card-title">Reports</h4>
-                    
+
                 </div>
             </div>
         </div>
