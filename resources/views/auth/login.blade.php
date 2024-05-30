@@ -17,7 +17,7 @@
 
           </div>
           <div class="card-seperator">
-            <span>DeptConnect</span>
+           <img src=" {{ asset('img/logo.png') }}" class="navbar-brand-image d-inline-block align-top mr-2" alt="">
           </div>
           <div class="card-body">
             <form method="POST" action="{{ route('login') }}">

@@ -139,18 +139,18 @@
 
                 {{-- For products --}}
                 <div class="tab-pane fade" id="card-tab-content-4" role="tabpanel" aria-labelledby="card-tab-2">
-                    <h4 class="card-title">Products</h4>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                   {{-- Start of Products --}}
+                   @include('sales.products')
+                   {{-- ./ --}}
                 </div>
                 {{-- ./ --}}
 
 
                 {{-- For Follow ups --}}
                 <div class="tab-pane fade" id="card-tab-content-5" role="tabpanel" aria-labelledby="card-tab-2">
-                    <h4 class="card-title">Follow Ups</h4>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                {{-- Start of Followup --}}
+                @include('sales.followup')
+                {{-- ./ --}}
                 </div>
 
                 {{-- ./ --}}

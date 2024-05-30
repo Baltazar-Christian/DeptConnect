@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand justify-content-between fixed-top">
     <a class="navbar-brand mb-0 h1 d-none d-md-block" href="index.html">
-      <img src=" {{ asset('img/logo.png') }}" class="navbar-brand-image d-inline-block align-top mr-2" alt="">
+        <img src=" {{ asset('img/logo.png') }}" class="navbar-brand-image d-inline-block align-top mr-2" alt="">
       DepLink
     </a>
 
@@ -70,7 +70,7 @@
         </div>
       </li> --}}
       <!-- Notifications -->
-      <li class="nav-item dropdown">
+      {{-- <li class="nav-item dropdown"> --}}
         {{-- <a class="nav-link avatar-with-name" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#">
             <i class="oi oi-person display-inline-block align-middle"></i>
             {{ Auth::user()->name }}
@@ -103,5 +103,16 @@
        </form>
         </div>
       </li>
+
+      <a class="nav-link avatar-with-name" href="{{ route('logout') }}"
+      onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+     <i class="oi oi-person display-inline-block "></i>
+     Logout
+   </a>
+
+   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+       @csrf
+   </form>
     </ul>
   </nav>
