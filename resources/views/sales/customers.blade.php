@@ -72,86 +72,85 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    function fetchCustomers() {
+        $.ajax({
+            url: '/customers', // Assuming base URL, replace with '{{ route('customers.index') }}' if using Laravel
+            type: 'GET',
+            success: function(data) {
+                var rows = "";
+                data.forEach(function(customer) {
+                    rows += `<tr>
+                        <td>${customer.id}</td>
+                        <td>${customer.name}</td>
+                        <td>${customer.email}</td>
+                        <td>${customer.phone}</td>
+                        <td>${customer.address}</td>
+                        <td>
+                            <button onclick="editCustomer(${customer.id})" class="btn btn-info btn-sm">Edit</button>
+                            <button onclick="deleteCustomer(${customer.id})" class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>`;
+                });
+                $('#customersBody').html(rows);
             }
         });
+    }
 
-        function fetchCustomers() {
-            $.ajax({
-                url: '{{ route('customers.index') }}',
-                type: 'GET',
-                dataType: 'json',
-                success: function(data) {
-                    var rows = "";
-                    $.each(data, function(index, customer) {
-                        rows += `<tr>
-                            <td>${customer.id}</td>
-                            <td>${customer.name}</td>
-                            <td>${customer.email}</td>
-                            <td>${customer.phone}</td>
-                            <td>${customer.address}</td>
-                            <td>
-                                <button onclick="editCustomer(${customer.id})" class="btn btn-info btn-sm">Edit</button>
-                                <button onclick="deleteCustomer(${customer.id})" class="btn btn-danger btn-sm">Delete</button>
-                            </td>
-                        </tr>`;
-                    });
-                    $('#customersBody').html(rows); // Ensure tbody is emptied and refilled with new data
-                }
-            });
-        }
+    $('#customerForm').submit(function(e) {
+        e.preventDefault();
+        var formData = $(this).serialize();
+        var customerUrl = $('#customer_id').val() ? '/customers/' + $('#customer_id').val() : '/customers';
+        var method = $('#customer_id').val() ? 'PUT' : 'POST';
 
-        $('#customerForm').submit(function(e) {
-            e.preventDefault();
-            var formData = $(this).serialize();
-            var formUrl = $('#customer_id').val() ? '/customers/' + $('#customer_id').val() : '/customers';
-            var formMethod = $('#customer_id').val() ? 'PUT' : 'POST';
-
-            $.ajax({
-                url: formUrl,
-                method: formMethod,
-                data: formData,
-                success: function(result) {
-                    $('#customerModal').modal('hide');
-                    fetchCustomers();
-                    $('#customerForm')[0].reset();
-                    $('#customer_id').val(''); // Reset hidden id field to ensure correct create/update
-                },
-                error: function(xhr) {
-                    console.error('Error occurred:', xhr.responseText);
-                }
-            });
+        $.ajax({
+            url: customerUrl,
+            method: method,
+            data: formData,
+            success: function() {
+                $('#customerModal').modal('hide');
+                fetchCustomers();
+                $('#customerForm')[0].reset();
+                $('#customer_id').val('');
+            },
+            error: function(xhr) {
+                console.error('Error occurred:', xhr.responseText);
+            }
         });
-
-        window.editCustomer = function(id) {
-            $.get('/customers/' + id, function(customer) {
-                $('#customer_id').val(customer.id);
-                $('#name').val(customer.name);
-                $('#email').val(customer.email);
-                $('#phone').val(customer.phone);
-                $('#address').val(customer.address);
-                $('#customerModalLabel').text('Edit Customer');
-                $('#customerModal').modal('show');
-            });
-        };
-
-        window.deleteCustomer = function(id) {
-            $.ajax({
-                url: '/customers/' + id,
-                method: 'DELETE',
-                success: function(result) {
-                    fetchCustomers();
-                },
-                error: function(xhr) {
-                    console.error('Error occurred:', xhr.responseText);
-                }
-            });
-        };
-
-        // Initial fetch of customers
-        fetchCustomers();
     });
+
+    window.editCustomer = function(id) {
+        $.get('/customers/' + id, function(customer) {
+            $('#customer_id').val(customer.id);
+            $('#name').val(customer.name);
+            $('#email').val(customer.email);
+            $('#phone').val(customer.phone);
+            $('#address').val(customer.address);
+            $('#customerModalLabel').text('Edit Customer');
+            $('#customerModal').modal('show');
+        });
+    };
+
+    window.deleteCustomer = function(id) {
+        $.ajax({
+            url: '/customers/' + id,
+            method: 'DELETE',
+            success: function() {
+                fetchCustomers();
+            },
+            error: function(xhr) {
+                console.error('Error occurred:', xhr.responseText);
+            }
+        });
+    };
+
+    fetchCustomers();
+});
+
 </script>

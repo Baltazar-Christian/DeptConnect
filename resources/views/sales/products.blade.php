@@ -65,20 +65,13 @@
 
 <script>
 $(document).ready(function() {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
     function fetchProducts() {
         $.ajax({
-            url: '{{ route('products.index') }}',
+            url: '/products',
             type: 'GET',
-            dataType: 'json',
             success: function(data) {
                 var rows = "";
-                $.each(data, function(index, product) {
+                data.forEach(function(product) {
                     rows += `<tr>
                         <td>${product.id}</td>
                         <td>${product.name}</td>
@@ -90,7 +83,7 @@ $(document).ready(function() {
                         </td>
                     </tr>`;
                 });
-                $('#productsBody').html(rows); // Clear and refill tbody with new data
+                $('#productsBody').html(rows);
             }
         });
     }
@@ -98,34 +91,26 @@ $(document).ready(function() {
     $('#productForm').submit(function(e) {
         e.preventDefault();
         var formData = new FormData(this);
-        var productId = $('#product_id').val();
-        var formUrl = productId ? '/products/' + productId : '/products';
-        var formMethod = productId ? 'PUT' : 'POST';
+        var productUrl = $('#product_id').val() ? '/products/' + $('#product_id').val() : '/products';
+        var method = $('#product_id').val() ? 'PUT' : 'POST';
 
         $.ajax({
-            url: formUrl,
-            method: formMethod,
+            url: productUrl,
+            method: method,
             data: formData,
             processData: false,
             contentType: false,
-            success: function(result) {
+            success: function() {
                 $('#productModal').modal('hide');
                 fetchProducts();
                 $('#productForm')[0].reset();
-                $('#product_id').val(''); // Ensure ID is reset for new entries
+                $('#product_id').val('');
             },
             error: function(xhr, status, error) {
                 console.error('Error occurred:', xhr.responseText);
             }
         });
     });
-
-    window.addProduct = function() {
-        $('#product_id').val('');
-        $('#productForm')[0].reset();
-        $('#productModalLabel').text('Add New Product');
-        $('#productModal').modal('show');
-    };
 
     window.editProduct = function(id) {
         $.get('/products/' + id, function(product) {
@@ -142,7 +127,7 @@ $(document).ready(function() {
         $.ajax({
             url: '/products/' + id,
             method: 'DELETE',
-            success: function(result) {
+            success: function() {
                 fetchProducts();
             },
             error: function(xhr) {
@@ -153,4 +138,5 @@ $(document).ready(function() {
 
     fetchProducts();
 });
+
 </script>

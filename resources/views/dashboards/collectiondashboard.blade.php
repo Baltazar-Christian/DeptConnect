@@ -136,10 +136,7 @@
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-4" role="tab"
                         aria-controls="card-tab-1" aria-selected="false">Closed Collections</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-5" role="tab"
-                        aria-controls="card-tab-1" aria-selected="false">Follow Ups</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-3"
                         role="tab" aria-controls="card-tab-2" aria-selected="false">Reports</a>
@@ -186,14 +183,7 @@
                 {{-- ./ --}}
 
 
-                {{-- For Follow ups --}}
-                <div class="tab-pane fade" id="card-tab-content-5" role="tabpanel" aria-labelledby="card-tab-2">
-                {{-- Start of Followup --}}
-                @include('collections.followup')
-                {{-- ./ --}}
-                </div>
 
-                {{-- ./ --}}
 
 
                 <div class="tab-pane fade" id="card-tab-content-3" role="tabpanel" aria-labelledby="card-tab-3">
