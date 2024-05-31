@@ -13,62 +13,53 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'nullable|string',
             'price' => 'required|numeric',
         ]);
 
-        Product::create($request->all());
-        return response()->json(['status' => 'success', 'message' => 'Product added successfully']);
+        $product = Product::create($validatedData);
+        return response()->json(['message' => 'Product created successfully!', 'product' => $product]);
     }
 
-    public function update(Request $request, Product $product)
+    public function show($id)
     {
-        $request->validate([
-            'name' => 'required',
+        $product = Product::find($id);
+        if (!$product) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
+
+        return response()->json($product);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $product = Product::find($id);
+        if (!$product) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
+
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'nullable|string',
             'price' => 'required|numeric',
         ]);
 
-        $product->update($request->all());
-        return response()->json(['status' => 'success', 'message' => 'Product updated successfully']);
+        $product->update($validatedData);
+        return response()->json(['message' => 'Product updated successfully!', 'product' => $product]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function destroy($id)
     {
-        //
-    }
+        $product = Product::find($id);
+        if (!$product) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $product->delete();
+        return response()->json(['message' => 'Product deleted successfully!']);
     }
 }

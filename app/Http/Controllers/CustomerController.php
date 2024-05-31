@@ -7,56 +7,32 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        if ($request->ajax()) {
-            $customers = Customer::all();
-            return response()->json($customers);
-        }
-        return view('customers.index');
-    }
-    public function create()
-    {
-        return view('customers.create');
+        $customers = Customer::all();
+        return response()->json($customers);
     }
 
-    
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:customers,email',
-            // other validation rules
-        ]);
-    
-        try {
-            Customer::create($request->all());
-            return response()->json(['status' => 'success']);
-        } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
-        }
+        $customer = Customer::create($request->all());
+        return response()->json($customer, 201);
     }
-    
 
     public function show(Customer $customer)
     {
-        return view('customers.show', compact('customer'));
-    }
-
-    public function edit(Customer $customer)
-    {
-        return view('customers.edit', compact('customer'));
+        return response()->json($customer);
     }
 
     public function update(Request $request, Customer $customer)
     {
         $customer->update($request->all());
-        return redirect()->route('customers.index');
+        return response()->json($customer);
     }
 
     public function destroy(Customer $customer)
     {
         $customer->delete();
-        return redirect()->route('customers.index');
+        return response()->json(null, 204);
     }
 }
