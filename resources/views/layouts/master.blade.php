@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>DepConnect | @yield('title')</title>
+    <title>DepLink | @yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap core CSS     -->
@@ -71,7 +71,7 @@
 
     <footer class="footer">
         <div class="container-fluid">
-         
+
             <p class="copyright pull-right text-center">
                 &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">TazarChriss</a>
 
