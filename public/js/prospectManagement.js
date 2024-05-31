@@ -13,7 +13,17 @@ function resetProspectForm() {
 }
 
 $(document).ready(function() {
-    $('.select2').select2();
+    // $('.select2').select2();
+    $('#prospectModal .select2').select2({
+        padding: '15px', /* Less padding on smaller screens */
+    });
+
+    $('#prospectModal').on('shown.bs.modal', function () {
+        $('.select2').select2({
+            width: '100%', // This option helps in applying the width correctly.
+            dropdownParent: $('#prospectModal'),
+        });
+    });
     fetchCustomersForProspects();
     fetchProductsForProspects();
     fetchProspects();

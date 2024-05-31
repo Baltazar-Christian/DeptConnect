@@ -33,7 +33,12 @@
             </div>
         </div>
     </div>
-
+    <style>
+        #prospectModal .select2-container--default .select2-selection--single,
+        #prospectModal .select2-container--default .select2-selection--multiple {
+            width: 100%!important; /* Forces the select2 dropdown to take full width of the form-group */
+        }
+        </style>
    <!-- Prospect Modal -->
 <div class="modal fade" id="prospectModal" tabindex="-1" aria-labelledby="prospectModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -49,17 +54,19 @@
                     <input type="hidden" id="prospect_id" name="prospect_id">
                     {{-- <input type="hidden" id="prospect_id" name="prospect_id"> --}}
 
-                    <div class="form-group col-md-12">
-                        <label for="prospect_customer_id">Customer</label>
-                        <select class="form-control select2" id="prospect_customer_id" name="customer_id" required>
-                            <!-- Customer options will be loaded here -->
-                        </select>
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label for="prospect_products">Products</label>
-                        <select class="form-control select2" id="prospect_products" name="products[]" multiple="multiple">
-                            <!-- Product options will be loaded here -->
-                        </select>
+                    <div class="row"> <!-- Ensure there is a row wrapper for proper alignment -->
+                        <div class="form-group col-md-12" style="width:100% !important;">
+                            <label for="prospect_customer_id">Customer</label>
+                            <select class="form-control select2" id="prospect_customer_id" name="customer_id" required>
+                                <!-- Customer options will be loaded here -->
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="prospect_products">Products</label>
+                            <select class="form-control select2" id="prospect_products" name="products[]" multiple="multiple">
+                                <!-- Product options will be loaded here -->
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="payment_amount">Payment Amount</label>
