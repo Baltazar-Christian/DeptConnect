@@ -20,11 +20,23 @@ class CustomerController extends Controller
         return view('customers.create');
     }
 
+    
     public function store(Request $request)
     {
-        Customer::create($request->all());
-        return redirect()->route('customers.index');
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:customers,email',
+            // other validation rules
+        ]);
+    
+        try {
+            Customer::create($request->all());
+            return response()->json(['status' => 'success']);
+        } catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
+    
 
     public function show(Customer $customer)
     {
