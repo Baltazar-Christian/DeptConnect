@@ -76,7 +76,7 @@
                 </div>
                 <div class="project-info-right">
                     <span class="no text-blue weight-500 font-24">40/60</span>
-                    <p class="weight-400 font-18">Unscanned</p>
+                    <p class="weight-400 font-18">Unscanned Accounts</p>
                 </div>
             </div>
             <div class="project-info-progress">
@@ -136,11 +136,11 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-2" role="tab"
-                        aria-controls="card-tab-1" aria-selected="false">Pending Collections</a>
+                        aria-controls="card-tab-1" aria-selected="false">Unscanned Accounts</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-4" role="tab"
-                        aria-controls="card-tab-1" aria-selected="false">Closed Collections</a>
+                        aria-controls="card-tab-1" aria-selected="false">Finished Installments</a>
                 </li>
 
                 <li class="nav-item">
