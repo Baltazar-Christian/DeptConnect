@@ -139,6 +139,8 @@ $(document).ready(function() {
 });
 
 
+
+
     window.editCustomer = function(id) {
         $.get('/customers/' + id, function(customer) {
             $('#customer_id').val(customer.id);
@@ -185,6 +187,7 @@ $(document).ready(function() {
             }
         });
     };
+    $('.modal-backdrop').remove();  // Forcefully remove any modal backdrops
 
     fetchCustomers();
 });
