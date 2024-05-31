@@ -31,7 +31,7 @@
             </div>
             <div class="project-info-progress">
                 <div class="row clearfix">
-                    <div class="col-sm-6 text-muted weight-500">Review</div>
+                    <div class="col-sm-6 text-muted weight-500">Unfinished  Installments</div>
                     <div class="col-sm-6 text-right weight-500 font-14 text-muted">89/100</div>
                 </div>
                 <div class="progress" style="height: 10px;">
