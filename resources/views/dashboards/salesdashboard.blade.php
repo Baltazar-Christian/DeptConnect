@@ -100,15 +100,15 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-2" role="tab"
-                        aria-controls="card-tab-1" aria-selected="false">Customers</a>
+                        aria-controls="card-tab-2" aria-selected="false">Customers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-5" data-toggle="tab" href="#card-tab-content-5" role="tab"
-                        aria-controls="card-tab-1" aria-selected="false">Follow Ups</a>
+                        aria-controls="card-tab-5" aria-selected="false">Follow Ups</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-4" data-toggle="tab" href="#card-tab-content-4" role="tab"
-                        aria-controls="card-tab-1" aria-selected="false">Products</a>
+                        aria-controls="card-tab-4" aria-selected="false">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-3" data-toggle="tab" href="#card-tab-content-3"

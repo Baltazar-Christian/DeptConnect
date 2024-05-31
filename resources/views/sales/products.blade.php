@@ -1,11 +1,12 @@
 
 <div class="p-4 mt-5">
-    <button class="btn btn-primary mb-3 float-right" data-toggle="modal" data-target="#productModal" onclick="addProduct()">Add New Product</button>
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-grid">
                 <div class="card-header">
                     <div class="card-header-title"><i class="fas fa-box"></i> Products List</div>
+                    <button class="btn btn-primary mb-3 float-right" data-toggle="modal" data-target="#productModal" onclick="addProduct()">Add New Product</button>
+
                 </div>
                 <div class="table-responsive-md">
                     <table class="table table-actions table-striped table-hover mb-0" data-table>
