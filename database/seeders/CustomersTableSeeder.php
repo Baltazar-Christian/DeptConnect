@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Customer;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -14,25 +15,14 @@ class CustomersTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('customers')->insert([
-            [
-                'name' => 'John Doe',
-                'email' => 'john.doe@example.com',
-                'phone' => '1234567890',
-                'address' => '1234 Elm Street'
-            ],
-            [
-                'name' => 'Jane Doe',
-                'email' => 'jane.doe@example.com',
-                'phone' => '0987654321',
-                'address' => '5678 Maple Street'
-            ],
-            [
-                'name' => 'Sam Smith',
-                'email' => 'sam.smith@example.com',
-                'phone' => '1029384756',
-                'address' => '1357 Oak Avenue'
-            ]
-        ]);
+          // Creating 20 sample customers
+          for ($i = 0; $i < 20; $i++) {
+            Customer::create([
+                'name' => 'Customer ' . $i,
+                'email' => 'customer' . $i . '@example.com',
+                'phone' => '123-456-7890',
+               'address'=> 'sample address'
+            ]);
+        }
     }
 }
