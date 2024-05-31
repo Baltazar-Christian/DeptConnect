@@ -1,6 +1,7 @@
-{/* <script> */}
+
 
 function showAddModal() {
+
     $('#prospectForm')[0].reset();
     $('#prospect_id').val('');
     $('#products').val(null).trigger('change');  // Reset the Select2 multi-select
@@ -10,6 +11,11 @@ function showAddModal() {
 }
 
 $(document).ready(function() {
+
+
+
+    $('.select2').select2();
+    $('#example').DataTable();
     initializeSelect2();
     fetchCustomersForProspects();
     fetchProductsForProspects();
@@ -39,6 +45,7 @@ $(document).ready(function() {
             }
         });
     }
+
 
     function fetchProductsForProspects() {
         $.ajax({
@@ -180,4 +187,3 @@ $(document).ready(function() {
     };
 });
 
-// </script>
