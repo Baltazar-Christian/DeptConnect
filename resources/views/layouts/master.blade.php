@@ -36,11 +36,12 @@
 <script src="https://cdn.jsdelivr.net/npm/select2/dist/js/select2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
 
   </head>
   {{-- <div class="pre-loader"></div> --}}
   <body>
-  
+
     <div class="adminx-container">
 
         {{-- start of navbar --}}
@@ -87,7 +88,7 @@
 
     <!-- If you prefer jQuery these are the required scripts -->
        	<!--  Charts Plugin -->
-	<script src="{{ asset('assets/js/chartist.min.js') }}"></script>
+	{{-- <script src="{{ asset('assets/js/chartist.min.js') }}"></script> --}}
 
     {{-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
@@ -99,7 +100,7 @@
 	<script src="{{ asset('assets/js/light-bootstrap-dashboard.js?v=1.4.0') }}"></script>
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="{{ asset('assets/js/demo.js') }}"></script>
+	{{-- <script src="{{ asset('assets/js/demo.js') }}"></script> --}}
 
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
@@ -121,5 +122,15 @@
         }); */
       });
     </script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+        demo.initChartist();
+
+
+
+    });
+</script>
   </body>
 </html>
