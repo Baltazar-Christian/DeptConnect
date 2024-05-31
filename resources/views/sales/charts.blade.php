@@ -156,6 +156,10 @@
             </div>
         </div> --}}
 
+
+        <div class="row">
+            <div class="col-md-6">
+
         <div>
             <button class="btn btn-sm btn-primary" onclick="drawChart('line')">Line Chart</button>
             <button class="btn btn-sm btn-primary" onclick="drawChart('bar')">Bar Chart</button>
@@ -163,12 +167,16 @@
             <button class="btn btn-sm btn-primary" onclick="drawChart('scatter')">Scatter Chart</button>
             <button class="btn btn-sm btn-primary" onclick="drawChart('area')">Area Chart</button>
         </div>
-
-        <div class="row">
-            <div class="col-md-6">
                 <div id="chartHours" style="width:100%; height:400px;"></div>
             </div>
             <div class="col-md-6">
+                <div>
+                    <button class="btn btn-sm btn-primary" onclick="drawActivityChart('column')">Bar Chart</button>
+                    <button class="btn btn-sm btn-primary" onclick="drawActivityChart('line')">Line Chart</button>
+                    <button class="btn btn-sm btn-primary" onclick="drawActivityChart('spline')">Spline Chart</button>
+                    <button class="btn btn-sm btn-primary" onclick="drawActivityChart('scatter')">Scatter Chart</button>
+                    <button class="btn btn-sm btn-primary" onclick="drawActivityChart('area')">Area Chart</button>
+                </div>
                 <div id="chartActivity" style="width:100%; height:400px;"></div>
             </div>
         </div>
@@ -176,10 +184,10 @@
         {{-- <div id="chartPreferences" style="width:100%; height:400px;"></div> --}}
 
         <script>
-            function drawChart(type) {
+            function drawHoursChart(type) {
                 Highcharts.chart('chartHours', {
                     chart: {
-                        type: type  // Dynamic chart type based on button click
+                        type: type
                     },
                     title: {
                         text: 'Hourly Sales Data'
@@ -208,35 +216,38 @@
                 });
             }
 
-            // Initial draw of the line chart
-            drawChart('line');
-
-            Highcharts.chart('chartActivity', {
-                chart: {
-                    type: 'column'
-                },
-                title: {
-                    text: 'Monthly Activity'
-                },
-                xAxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                },
-                yAxis: {
-                    min: 0,
+            function drawActivityChart(type) {
+                Highcharts.chart('chartActivity', {
+                    chart: {
+                        type: type
+                    },
                     title: {
-                        text: 'Activity'
-                    }
-                },
-                series: [{
-                    name: 'Series 1',
-                    data: [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
-                    color: '#008080'
-                }, {
-                    name: 'Series 2',
-                    data: [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695],
-                    color: '#FFD700'
-                }]
-            });
+                        text: 'Monthly Activity'
+                    },
+                    xAxis: {
+                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Activity'
+                        }
+                    },
+                    series: [{
+                        name: 'Series 1',
+                        data: [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
+                        color: '#008080'
+                    }, {
+                        name: 'Series 2',
+                        data: [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695],
+                        color: '#FFD700'
+                    }]
+                });
+            }
+
+            // Initial draw of charts
+            drawHoursChart('line');
+            drawActivityChart('column');
 
             Highcharts.chart('chartPreferences', {
                 chart: {
