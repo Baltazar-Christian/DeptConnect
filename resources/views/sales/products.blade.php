@@ -107,28 +107,30 @@ $(document).ready(function() {
     }
 
     $('#productForm').submit(function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-        var productUrl = $('#product_id').val() ? '/products/' + $('#product_id').val() : '/products';
-        var method = $('#product_id').val() ? 'PUT' : 'POST';
+    e.preventDefault();  // Prevent the default form submission
 
-        $.ajax({
-            url: productUrl,
-            method: method,
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function() {
-                $('#productModal').modal('hide');
-                fetchProducts();
-                $('#productForm')[0].reset();
-                $('#product_id').val('');
-            },
-            error: function(xhr, status, error) {
-                console.error('Error occurred:', xhr.responseText);
-            }
-        });
+    var formData = {
+        'name': $('#productName').val(),
+        'description': $('#description').val(),
+        'price': $('#price').val()
+    };
+    var productId = $('#product_id').val();  // Get the product ID from the hidden input field
+
+    $.ajax({
+        url: '/products/' + productId,  // Use the product ID in the URL
+        method: 'PUT',  // Specify the method to be PUT for updates
+        data: formData,
+        success: function(response) {
+            $('#productModal').modal('hide');  // Hide the modal on success
+            fetchProducts();  // Optionally, refresh the list of products
+            alert('Product updated successfully!');
+        },
+        error: function(xhr) {
+            console.error('Error updating product: ' + xhr.responseText);
+            alert('Error updating product. Please try again.');
+        }
     });
+});
 
     window.editProduct = function(id) {
     $.get('/products/' + id, function(product) {
