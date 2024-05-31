@@ -1,28 +1,38 @@
 {/* <script> */}
+
+function showAddModal() {
+    $('#prospectForm')[0].reset();
+    $('#prospect_id').val('');
+    $('#products').val(null).trigger('change');  // Reset the Select2 multi-select
+    $('#customer_id').val(null).trigger('change');  // Reset the Select2 customer select
+    $('#prospectModalLabel').text('Add New Prospect');
+    $('#prospectModal').modal('show');
+}
+
 $(document).ready(function() {
     initializeSelect2();
-    fetchCustomers();
-    fetchProducts();
+    fetchCustomersForProspects();
+    fetchProductsForProspects();
     fetchProspects();
 
     function initializeSelect2() {
-        $('#customer_id, #products').select2({
+        $('.select2').select2({
             width: '100%',
             placeholder: "Select an option",
             allowClear: true
         });
     }
 
-    function fetchCustomers() {
+    function fetchCustomersForProspects() {
         $.ajax({
-            url: '/api/customers',  // Make sure you have this endpoint configured
+            url: '/api/customers',  // Ensure this is the correct endpoint
             method: 'GET',
             success: function(data) {
                 var options = '<option value="">Select a Customer</option>';
                 data.forEach(function(customer) {
                     options += `<option value="${customer.id}">${customer.name}</option>`;
                 });
-                $('#customer_id').html(options);
+                $('#prospect_customer_id').html(options);
             },
             error: function() {
                 Swal.fire('Error', 'Failed to retrieve customers.', 'error');
@@ -30,22 +40,24 @@ $(document).ready(function() {
         });
     }
 
-    function fetchProducts() {
+    function fetchProductsForProspects() {
         $.ajax({
-            url: '/api/products',  // Make sure you have this endpoint configured
+            url: '/api/products',  // Ensure this is the correct endpoint
             method: 'GET',
             success: function(data) {
                 var options = '';
                 data.forEach(function(product) {
                     options += `<option value="${product.id}">${product.name} - ${product.price}</option>`;
                 });
-                $('#products').html(options);
+                $('#prospect_products').html(options);
             },
             error: function() {
                 Swal.fire('Error', 'Failed to retrieve products.', 'error');
             }
         });
     }
+
+    // Continue with the setup for handling form submission, etc.
 
     function fetchProspects() {
         $.ajax({
