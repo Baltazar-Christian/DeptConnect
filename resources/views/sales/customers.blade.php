@@ -1,4 +1,4 @@
-
+<div class="">
 <div class="p-4 mt-5">
     <div class="row">
         <div class="col-md-12">
@@ -28,7 +28,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- Add/Edit Customer Modal -->
@@ -159,3 +158,4 @@
     });
     </script>
     
+</div>
