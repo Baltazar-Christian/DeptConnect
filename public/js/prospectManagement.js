@@ -1,116 +1,26 @@
 
 
 function showAddModal() {
-
-    $('#prospectForm')[0].reset();
-    $('#prospect_id').val('');
-    $('#products').val(null).trigger('change');  // Reset the Select2 multi-select
-    $('#customer_id').val(null).trigger('change');  // Reset the Select2 customer select
+    resetProspectForm();
     $('#prospectModalLabel').text('Add New Prospect');
     $('#prospectModal').modal('show');
 }
 
+function resetProspectForm() {
+    $('#prospectForm')[0].reset();
+    $('#prospect_customer_id').val('').trigger('change');
+    $('#prospect_products').val('').trigger('change');
+}
+
 $(document).ready(function() {
-
-
-
     $('.select2').select2();
-    $('#example').DataTable();
-    initializeSelect2();
     fetchCustomersForProspects();
     fetchProductsForProspects();
     fetchProspects();
 
-    function initializeSelect2() {
-        $('.select2').select2({
-            width: '100%',
-            placeholder: "Select an option",
-            allowClear: true
-        });
-    }
-
-    function fetchCustomersForProspects() {
-        $.ajax({
-            url: '/api/customers',  // Ensure this is the correct endpoint
-            method: 'GET',
-            success: function(data) {
-                var options = '<option value="">Select a Customer</option>';
-                data.forEach(function(customer) {
-                    options += `<option value="${customer.id}">${customer.name}</option>`;
-                });
-                $('#prospect_customer_id').html(options);
-            },
-            error: function() {
-                Swal.fire('Error', 'Failed to retrieve customers.', 'error');
-            }
-        });
-    }
-
-
-    function fetchProductsForProspects() {
-        $.ajax({
-            url: '/api/products',  // Ensure this is the correct endpoint
-            method: 'GET',
-            success: function(data) {
-                var options = '';
-                data.forEach(function(product) {
-                    options += `<option value="${product.id}">${product.name} - ${product.price}</option>`;
-                });
-                $('#prospect_products').html(options);
-            },
-            error: function() {
-                Swal.fire('Error', 'Failed to retrieve products.', 'error');
-            }
-        });
-    }
-
-    // Continue with the setup for handling form submission, etc.
-
-    function fetchProspects() {
-        $.ajax({
-            url: '/prospects',  // Adjust according to your API endpoint
-            method: 'GET',
-            success: function(data) {
-                var rows = '';
-                data.forEach(function(prospect) {
-                    rows += `<tr>
-                        <td>${prospect.id}</td>
-                        <td>${prospect.customer_id}</td>
-                        <td>${prospect.payment_amount}</td>
-                        <td>${prospect.installment_plan}</td>
-                        <td>${prospect.credit_form_url || ''}</td>
-                        <td>${prospect.prospect_type}</td>
-                        <td>${prospect.paid_amount}</td>
-                        <td>${prospect.status}</td>
-                        <td>${prospect.payment_deadline}</td>
-                        <td>
-                            <button onclick="editProspect(${prospect.id})" class="btn btn-info btn-sm">Edit</button>
-                            <button onclick="deleteProspect(${prospect.id})" class="btn btn-danger btn-sm">Delete</button>
-                        </td>
-                    </tr>`;
-                });
-                $('#prospectsBody').html(rows);
-            },
-            error: function() {
-                Swal.fire('Error', 'Failed to retrieve prospects.', 'error');
-            }
-        });
-    }
-
     $('#prospectForm').submit(function(e) {
         e.preventDefault();
-        var formData = {
-            'customer_id': $('#customer_id').val(),
-            'products': $('#products').val(),  // Array of product IDs
-            'payment_amount': $('#payment_amount').val(),
-            'installment_plan': $('#installment_plan').val(),
-            'credit_form_url': $('#credit_form_url').val(),
-            'prospect_type': $('#prospect_type').val(),
-            'paid_amount': $('#paid_amount').val(),
-            'status': $('#status').val(),
-            'payment_deadline': $('#payment_deadline').val()
-        };
-
+        var formData = gatherFormData();
         var prospectId = $('#prospect_id').val();
         var url = prospectId ? `/prospects/${prospectId}` : '/prospects';
         var method = prospectId ? 'PUT' : 'POST';
@@ -122,8 +32,7 @@ $(document).ready(function() {
             success: function(response) {
                 $('#prospectModal').modal('hide');
                 Swal.fire('Success', 'Prospect data saved successfully!', 'success');
-                $('#prospectForm')[0].reset();
-                $('.select2').val(null).trigger('change');  // Reset Select2
+                resetProspectForm();
                 fetchProspects();
             },
             error: function(xhr) {
@@ -131,6 +40,50 @@ $(document).ready(function() {
             }
         });
     });
+
+    function gatherFormData() {
+        return {
+            'customer_id': $('#prospect_customer_id').val(),
+            'products': $('#prospect_products').val(),
+            'payment_amount': $('#payment_amount').val(),
+            'installment_plan': $('#installment_plan').val(),
+            'credit_form_url': $('#credit_form_url').val(),
+            'prospect_type': $('#prospect_type').val(),
+            'paid_amount': $('#paid_amount').val(),
+            'status': $('#status').val(),
+            'payment_deadline': $('#payment_deadline').val()
+        };
+    }
+});
+
+// Load customers and products
+function fetchCustomersForProspects() {
+    $.ajax({
+        url: '/customers',
+        method: 'GET',
+        success: function(data) {
+            var options = '<option value="">Select a Customer</option>';
+            data.forEach(function(customer) {
+                options += `<option value="${customer.id}">${customer.name}</option>`;
+            });
+            $('#prospect_customer_id').html(options);
+        }
+    });
+}
+
+function fetchProductsForProspects() {
+    $.ajax({
+        url: '/products',
+        method: 'GET',
+        success: function(data) {
+            var options = '';
+            data.forEach(function(product) {
+                options += `<option value="${product.id}">${product.name} - ${product.price}</option>`;
+            });
+            $('#prospect_products').html(options);
+        }
+    });
+}
 
     window.editProspect = function(id) {
         $.ajax({
@@ -185,5 +138,5 @@ $(document).ready(function() {
             }
         });
     };
-});
+
 

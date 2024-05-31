@@ -18,20 +18,24 @@
     {{-- <link href="{}assets/css/demo.css" rel="stylesheet" /> --}}
 
 
-    <!--     Fonts and icons     -->
-    {{-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'> --}}
-    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="  {{  asset('dist/css/adminx.css') }} " media="screen" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2/dist/js/select2.min.js"></script>
-<!-- Include SweetAlert2 from CDN in your HTML head -->
+<!-- Fonts and icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700,300" rel='stylesheet' type='text/css'>
+
+<!-- Custom icons -->
+<link href="{{ asset('assets/css/pe-icon-7-stroke.css') }}" rel="stylesheet" />
+
+<!-- Stylesheets -->
+<link href="{{ asset('dist/css/adminx.css') }}" rel="stylesheet" media="screen" />
+<link href="https://cdn.jsdelivr.net/npm/select2/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Ensure only one jQuery version is loaded -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2/dist/js/select2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
   </head>
   <body>
@@ -82,7 +86,7 @@
     <!-- If you prefer jQuery these are the required scripts -->
        	<!--  Charts Plugin -->
 	<script src="{{ asset('assets/js/chartist.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
     <script src=" {{ asset('dist/js/vendor.js') }} "></script>

@@ -47,14 +47,15 @@
             <form id="prospectForm">
                 <div class="modal-body">
                     <input type="hidden" id="prospect_id" name="prospect_id">
-                    <input type="hidden" id="prospect_id" name="prospect_id">
-                    <div class="form-group">
+                    {{-- <input type="hidden" id="prospect_id" name="prospect_id"> --}}
+
+                    <div class="form-group col-md-12">
                         <label for="prospect_customer_id">Customer</label>
                         <select class="form-control select2" id="prospect_customer_id" name="customer_id" required>
                             <!-- Customer options will be loaded here -->
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group col-md-12">
                         <label for="prospect_products">Products</label>
                         <select class="form-control select2" id="prospect_products" name="products[]" multiple="multiple">
                             <!-- Product options will be loaded here -->
