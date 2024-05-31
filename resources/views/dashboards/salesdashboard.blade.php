@@ -117,7 +117,8 @@
                 <div class="tab-pane fade show active" id="card-tab-content-6" role="tabpanel" aria-labelledby="card-tab-6">
                     <h4 class="card-title">Statistics</h4>
                     <!-- Start of Charts -->
-                    <!-- @include('sales.charts') -->
+                    @include('sales.charts') 
+                    
                 </div>
 
                 <div class="tab-pane fade" id="card-tab-content-1" role="tabpanel"

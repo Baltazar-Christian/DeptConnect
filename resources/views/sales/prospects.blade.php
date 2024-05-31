@@ -187,10 +187,12 @@
                 var tableBody = $('#prospectsBody');
                 tableBody.empty();
                 data.forEach(function(prospect) {
+                    var customerName = prospect.customer ? prospect.customer.name : 'No Customer'; // Handle null case
+
                     tableBody.append(
                         `<tr>
-                            <td>${prospect.id}</td>
-                            <td>${prospect.customer_id}</td>
+                            <td>${new Date(prospect.created_at).toLocaleDateString()}</td>
+                            <td>${customerName}</td>
                             <td>${prospect.payment_amount}</td>
                             <td>${prospect.installment_plan}</td>
                             <td><a href="${prospect.credit_form_url}" target="_blank">View Form</a></td>

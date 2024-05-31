@@ -8,14 +8,14 @@
     {{-- <link href="assets/css/bootstrap.min.css" rel="stylesheet" /> --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Animation library for notifications   -->
-    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/animate.min.css') }}" rel="stylesheet"/>
 
     <!--  Light Bootstrap Table core CSS    -->
     {{-- <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/> --}}
 
 
     <!--  CSS for Demo Purpose, don't include it in your project     -->
-    {{-- <link href="{}assets/css/demo.css" rel="stylesheet" /> --}}
+    <link href="{{  asset('assets/css/demo.css' )}}" rel="stylesheet" />
 
 
 <!-- Fonts and icons -->
@@ -38,7 +38,9 @@
 
 
   </head>
+  {{-- <div class="pre-loader"></div> --}}
   <body>
+  
     <div class="adminx-container">
 
         {{-- start of navbar --}}
@@ -86,17 +88,18 @@
     <!-- If you prefer jQuery these are the required scripts -->
        	<!--  Charts Plugin -->
 	<script src="{{ asset('assets/js/chartist.min.js') }}"></script>
+
     {{-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
     <script src=" {{ asset('dist/js/vendor.js') }} "></script>
     <script src=" {{ asset('dist/js/adminx.js') }}"></script>
-
+	<script src="{{ asset('assetvendors/scripts/script.js') }}"></script>
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	{{-- <script src="{{ asset('assets/js/light-bootstrap-dashboard.js?v=1.4.0') }}"></script> --}}
+	<script src="{{ asset('assets/js/light-bootstrap-dashboard.js?v=1.4.0') }}"></script>
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	{{-- <script src="{{ asset('assets/js/demo.js') }}"></script> --}}
+	<script src="{{ asset('assets/js/demo.js') }}"></script>
 
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>

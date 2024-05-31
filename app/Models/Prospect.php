@@ -21,6 +21,12 @@ class Prospect extends Model
     return $this->hasMany(ProspectItem::class);
 }
 
+// Define the relationship to Customer
+public function customer()
+{
+    return $this->belongsTo('App\Models\Customer', 'customer_id');
+}
+
 public function installments()
 {
     return $this->hasMany(ProspectInstallment::class);

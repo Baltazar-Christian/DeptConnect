@@ -11,7 +11,7 @@ class ProspectController extends Controller
 {
     public function index()
     {
-        $prospects = Prospect::all();
+        $prospects = Prospect::with('customer')->get(); // Eager load customer information
         return response()->json($prospects);
     }
 
