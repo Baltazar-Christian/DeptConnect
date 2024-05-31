@@ -103,15 +103,15 @@
                         aria-controls="card-tab-1" aria-selected="false">Customers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-5" role="tab"
+                    <a class="nav-link" id="card-tab-5" data-toggle="tab" href="#card-tab-content-5" role="tab"
                         aria-controls="card-tab-1" aria-selected="false">Follow Ups</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-4" role="tab"
+                    <a class="nav-link" id="card-tab-4" data-toggle="tab" href="#card-tab-content-4" role="tab"
                         aria-controls="card-tab-1" aria-selected="false">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-3"
+                    <a class="nav-link" id="card-tab-3" data-toggle="tab" href="#card-tab-content-3"
                         role="tab" aria-controls="card-tab-2" aria-selected="false">Reports</a>
                 </li>
             </ul>
@@ -148,7 +148,7 @@
                 {{-- For Reports --}}
 
                 {{-- For products --}}
-                <div class="tab-pane fade" id="card-tab-content-4" role="tabpanel" aria-labelledby="card-tab-2">
+                <div class="tab-pane fade" id="card-tab-content-4" role="tabpanel" aria-labelledby="card-tab-4">
                    {{-- Start of Products --}}
                    @include('sales.products')
                    {{-- ./ --}}
@@ -157,7 +157,7 @@
 
 
                 {{-- For Follow ups --}}
-                <div class="tab-pane fade" id="card-tab-content-5" role="tabpanel" aria-labelledby="card-tab-2">
+                <div class="tab-pane fade" id="card-tab-content-5" role="tabpanel" aria-labelledby="card-tab-5">
                 {{-- Start of Followup --}}
                 @include('sales.followup')
                 {{-- ./ --}}
