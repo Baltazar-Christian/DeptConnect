@@ -9,7 +9,7 @@
                     <button class="btn btn-primary mb-3 float-right" data-toggle="modal" data-target="#customerModal">Add New Customer</button>
                 </div>
                 <div class="table-responsive-md">
-                    <table class="table table-actions table-striped table-hover table-hover mb-0" id="customersTable">
+                    <table data-table="true" class="table table-actions table-bordered table-striped table-hover table-hover mb-0" id="customersTable">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>

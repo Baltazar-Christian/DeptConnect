@@ -10,7 +10,7 @@
                     <button class="btn btn-primary float-right" onclick="showAddModal()">Add New Prospect</button>
                 </div>
                 <div class="table-responsive-md">
-                    <table class="table table-actions table-striped table-hover mb-0" id="prospectsTable">
+                    <table data-table="true" class="table table-actions table-bordered table-striped table-hover mb-0" id="prospectsTable">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
@@ -125,12 +125,12 @@
         $('#prospectModal .select2').select2({
             dropdownParent: $('#prospectModal')
         });
-    
+
         // Fetch initial data when the document is ready
         fetchCustomersForProspects();
         fetchProductsForProspects();
         fetchProspects();
-    
+
         // Form submission for adding or updating prospects
         $('#prospectForm').submit(function(e) {
             e.preventDefault();
@@ -138,7 +138,7 @@
             var prospectId = $('#prospect_id').val();
             var url = prospectId ? `/prospects/${prospectId}` : '/prospects';
             var method = prospectId ? 'PUT' : 'POST';
-    
+
             $.ajax({
                 url: url,
                 method: method,
@@ -157,13 +157,13 @@
             });
         });
     });
-    
+
     // Reset and prepare the form for a new entry or edit
     function resetProspectForm() {
         $('#prospectForm')[0].reset();
         $('#prospect_customer_id, #prospect_products').val(null).trigger('change');
     }
-    
+
     function gatherFormData() {
         return {
             customer_id: $('#prospect_customer_id').val(),
@@ -177,7 +177,7 @@
             payment_deadline: $('#payment_deadline').val()
         };
     }
-    
+
     // Fetching prospects and populating the table
     function fetchProspects() {
         $.ajax({
@@ -197,7 +197,7 @@
                             <td>${prospect.installment_plan}</td>
                             <td><a href="${prospect.credit_form_url}" target="_blank">View Form</a></td>
                             <td>${prospect.prospect_type}</td>
-                            <td>${prospect.paid_amount}</td>  
+                            <td>${prospect.paid_amount}</td>
                             <td>${prospect.status}</td>
                             <td>${new Date(prospect.payment_deadline).toLocaleDateString()}</td>
                             <td>
@@ -213,7 +213,7 @@
             }
         });
     }
-    
+
     // Load customer data for the select2 dropdown
     function fetchCustomersForProspects() {
         $.ajax({
@@ -228,7 +228,7 @@
             }
         });
     }
-    
+
     // Load product data for the select2 dropdown
     function fetchProductsForProspects() {
         $.ajax({
@@ -243,7 +243,7 @@
             }
         });
     }
-    
+
     // Editing a prospect
     window.editProspect = function(id) {
         $.ajax({
@@ -268,7 +268,7 @@
             }
         });
     };
-    
+
     // Deleting a prospect
     window.deleteProspect = function(id) {
         Swal.fire({
@@ -296,4 +296,3 @@
         });
     };
     </script>
-    

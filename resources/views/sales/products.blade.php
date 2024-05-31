@@ -11,7 +11,7 @@
 
                 </div>
                 <div class="table-responsive-md">
-                    <table class="table table-actions table-striped table-hover mb-0" id="productsTable" data-table>
+                    <table data-table="true" class="table table-actions table-bordered table-striped table-hover mb-0" id="productsTable" data-table>
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>

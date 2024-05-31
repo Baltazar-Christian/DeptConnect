@@ -105,23 +105,36 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script>
-      $(document).ready(function() {
-        var table = $('[data-table]').DataTable({
-          "columns": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            { "orderable": false }
-          ]
-        });
+        $(document).ready(function() {
+            var table = $('[data-table]').DataTable({
+                // Remove the specific columns array to apply default settings to all columns
+                // Enable global search functionality
+                searching: true,
+                // Enable pagination
+                paging: true,
+                // Set default number of items per page
+                pageLength: 10,
+                // Enable changing the number of items per page
+                lengthChange: true,
+                // Options for items per page in the dropdown
+                lengthMenu: [ 10, 25, 50, 100 ],
+                // Remove ordering from all columns by default, individual columns can be set in the HTML with data-orderable="false"
+                ordering: true,
+                // Optional: Use this if you want to disable ordering completely
+                // ordering: false,
+                // Initialize responsive extension if you are using it
+                responsive: true
+            });
 
-        /* $('.form-control-search').keyup(function(){
-          table.search($(this).val()).draw() ;
-        }); */
-      });
+            // Uncomment the following lines if you want to re-enable the custom search functionality
+            /*
+            $('.form-control-search').keyup(function(){
+                table.search($(this).val()).draw();
+            });
+            */
+        });
     </script>
+
 
     <script type="text/javascript">
     $(document).ready(function(){
