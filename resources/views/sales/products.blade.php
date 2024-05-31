@@ -121,6 +121,7 @@ $(document).ready(function() {
         method: 'PUT',  // Specify the method to be PUT for updates
         data: formData,
         success: function(response) {
+            $('#productModal').modal('hide');  // Hide the modal on success
             Swal.fire({
                 title: 'Success!',
                 text: 'Product updated successfully!',
@@ -128,12 +129,12 @@ $(document).ready(function() {
                 confirmButtonText: 'OK'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $('#productModal').modal('hide');  // Hide the modal on success
                     fetchProducts();  // Optionally, refresh the list of products
                 }
             });
         },
         error: function(xhr) {
+            $('#productModal').modal('hide');  // Hide the modal on error
             Swal.fire({
                 title: 'Error!',
                 text: 'Error updating product. Please try again.',
@@ -156,18 +157,42 @@ $(document).ready(function() {
         });
     };
 
-    window.deleteProduct = function(id) {
-        $.ajax({
-            url: '/products/' + id,
-            method: 'DELETE',
-            success: function() {
-                fetchProducts();
-            },
-            error: function(xhr) {
-                console.error('Error occurred:', xhr.responseText);
-            }
-        });
-    };
+    window.deleteProduct = function(productId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $('#productModal').modal('hide');  // Close any open modals
+            $.ajax({
+                url: '/products/' + productId,
+                method: 'DELETE',
+                success: function(response) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your product has been deleted.',
+                        'success'
+                    );
+                    fetchProducts();  // Refresh the product list
+                },
+                error: function() {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Failed to delete the product. Please try again.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            });
+        }
+    });
+};
+
 
     fetchProducts();
 });
