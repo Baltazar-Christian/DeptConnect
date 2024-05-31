@@ -1,5 +1,4 @@
-
-<div class=" mt-5">
+<div class="mt-5">
     <button class="btn btn-primary mb-3" onclick="addProduct()">Add New Product</button>
     <div class="row">
         <div class="col-md-12">
@@ -8,7 +7,7 @@
                     <div class="card-header-title"><i class="fas fa-box"></i> Products List</div>
                 </div>
                 <div class="table-responsive-md">
-                    <table class="table table-actions table-striped table-hover mb-0" data-table>
+                    <table class="table table-actions table-striped table-hover mb-0" id="productsTable" data-table>
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
@@ -18,7 +17,7 @@
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="productsBody">
                             <!-- Data will be loaded here by jQuery -->
                         </tbody>
                     </table>
@@ -26,39 +25,40 @@
             </div>
         </div>
     </div>
+
     <!-- Add/Edit Product Modal -->
     <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="productModalLabel">New Product</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form id="productForm">
-              <div class="modal-body">
-                  <input type="hidden" id="product_id" name="product_id">
-                  <div class="form-group">
-                      <label for="name">Name</label>
-                      <input type="text" class="form-control" id="name" name="name" required>
-                  </div>
-                  <div class="form-group">
-                      <label for="description">Description</label>
-                      <textarea class="form-control" id="description" name="description"></textarea>
-                  </div>
-                  <div class="form-group">
-                      <label for="price">Price ($)</label>
-                      <input type="number" class="form-control" id="price" name="price" step="0.01" required>
-                  </div>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Save Product</button>
-              </div>
-          </form>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">New Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="productForm">
+                    <div class="modal-body">
+                        <input type="hidden" id="product_id" name="product_id">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price ($)</label>
+                            <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Product</button>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
 </div>
 
@@ -89,7 +89,7 @@ $(document).ready(function() {
                         </td>
                     </tr>`;
                 });
-                $('table[data-table] tbody').html(rows);
+                $('#productsBody').html(rows); // Clear and refill tbody with new data
             }
         });
     }
@@ -111,7 +111,7 @@ $(document).ready(function() {
                 $('#productModal').modal('hide');
                 fetchProducts();
                 $('#productForm')[0].reset();
-                $('#product_id').val('');
+                $('#product_id').val(''); // Ensure ID is reset for new entries
             },
             error: function(xhr, status, error) {
                 console.error('Error occurred:', xhr.responseText);
