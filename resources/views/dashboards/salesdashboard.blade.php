@@ -87,7 +87,7 @@
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 {{-- start of tabs section --}}
 <div>
-    <div class="card mb-grid ">
+    <div class="card mb-grid">
         <div class="card-header">
             <ul class="nav nav-pills card-header-pills" role="tablist">
                 <li class="nav-item">
@@ -95,84 +95,53 @@
                         role="tab" aria-controls="card-tab-content-6" aria-selected="true">Charts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " id="card-tab-1" data-toggle="tab" href="#card-tab-content-1"
-                        role="tab" aria-controls="card-tab-content-1" aria-selected="true">Prospects</a>
+                    <a class="nav-link" id="card-tab-1" data-toggle="tab" href="#card-tab-content-1"
+                        role="tab" aria-controls="card-tab-content-1" aria-selected="false">Prospects</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-2" role="tab"
-                        aria-controls="card-tab-2" aria-selected="false">Customers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="card-tab-5" data-toggle="tab" href="#card-tab-content-5" role="tab"
-                        aria-controls="card-tab-5" aria-selected="false">Follow Ups</a>
+                        aria-controls="card-tab-content-2" aria-selected="false">Customers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-4" data-toggle="tab" href="#card-tab-content-4" role="tab"
-                        aria-controls="card-tab-4" aria-selected="false">Products</a>
+                        aria-controls="card-tab-content-4" aria-selected="false">Products</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-3" data-toggle="tab" href="#card-tab-content-3"
-                        role="tab" aria-controls="card-tab-2" aria-selected="false">Reports</a>
+                        role="tab" aria-controls="card-tab-content-3" aria-selected="false">Reports</a>
                 </li>
             </ul>
         </div>
         <div class="card-body">
             <div class="tab-content">
-
-
-                {{-- For Charts --}}
                 <div class="tab-pane fade show active" id="card-tab-content-6" role="tabpanel" aria-labelledby="card-tab-6">
                     <h4 class="card-title">Statistics</h4>
-
-                    {{-- Start of Charts --}}
-                    {{-- @include('sales.charts') --}}
-                    {{-- ./ --}}
+                    <!-- Start of Charts -->
+                    <!-- @include('sales.charts') -->
                 </div>
-                {{-- ./ --}}
 
-                {{-- For Prospects --}}
                 <div class="tab-pane fade" id="card-tab-content-1" role="tabpanel"
                     aria-labelledby="card-tab-1">
-                    {{-- Start of Prospects --}}
+                    <!-- Start of Prospects -->
                     @include('sales.prospects')
-                    {{-- ./ --}}
                 </div>
-                {{-- ./ --}}
 
-                {{-- For Customers --}}
                 <div class="tab-pane fade" id="card-tab-content-2" role="tabpanel" aria-labelledby="card-tab-2">
-                      {{-- Start of Customers --}}
-                      @include('sales.customers')
-                      {{-- ./ --}}
+                    <!-- Start of Customers -->
+                    @include('sales.customers')
                 </div>
-                {{-- For Reports --}}
 
-                {{-- For products --}}
                 <div class="tab-pane fade" id="card-tab-content-4" role="tabpanel" aria-labelledby="card-tab-4">
-                   {{-- Start of Products --}}
+                   <!-- Start of Products -->
                    @include('sales.products')
-                   {{-- ./ --}}
                 </div>
-                {{-- ./ --}}
-
-
-                {{-- For Follow ups --}}
-                <div class="tab-pane fade" id="card-tab-content-5" role="tabpanel" aria-labelledby="card-tab-5">
-                {{-- Start of Followup --}}
-                @include('sales.followup')
-                {{-- ./ --}}
-                </div>
-
-                {{-- ./ --}}
-
 
                 <div class="tab-pane fade" id="card-tab-content-3" role="tabpanel" aria-labelledby="card-tab-3">
                     <h4 class="card-title">Reports</h4>
-                    
                 </div>
             </div>
         </div>
     </div>
-
 </div>
+
 {{-- ./ --}}
