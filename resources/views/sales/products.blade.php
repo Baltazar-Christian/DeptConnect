@@ -1,12 +1,22 @@
-
-<div class="p-4 mt-5">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Product Management</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container mt-5">
+    <button class="btn btn-primary mb-3" onclick="addProduct()">Add New Product</button>
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-grid">
                 <div class="card-header">
                     <div class="card-header-title"><i class="fas fa-box"></i> Products List</div>
-                    <button class="btn btn-primary mb-3 float-right" data-toggle="modal" data-target="#productModal" onclick="addProduct()">Add New Product</button>
-
                 </div>
                 <div class="table-responsive-md">
                     <table class="table table-actions table-striped table-hover mb-0" data-table>
@@ -32,7 +42,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+            <h5 class="modal-title" id="productModalLabel">New Product</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -49,7 +59,7 @@
                       <textarea class="form-control" id="description" name="description"></textarea>
                   </div>
                   <div class="form-group">
-                      <label for="price">Price</label>
+                      <label for="price">Price ($)</label>
                       <input type="number" class="form-control" id="price" name="price" step="0.01" required>
                   </div>
               </div>
@@ -83,7 +93,7 @@ $(document).ready(function() {
                         <td>${product.id}</td>
                         <td>${product.name}</td>
                         <td>${product.description}</td>
-                        <td>${product.price.toFixed(2)}</td>
+                        <td>$${parseFloat(product.price).toFixed(2)}</td>
                         <td>
                             <button onclick="editProduct(${product.id})" class="btn btn-info btn-sm">Edit</button>
                             <button onclick="deleteProduct(${product.id})" class="btn btn-danger btn-sm">Delete</button>
@@ -97,7 +107,7 @@ $(document).ready(function() {
 
     $('#productForm').submit(function(e) {
         e.preventDefault();
-        var formData = $(this).serialize();
+        var formData = new FormData(this);
         var productId = $('#product_id').val();
         var formUrl = productId ? '/products/' + productId : '/products';
         var formMethod = productId ? 'PUT' : 'POST';
@@ -106,11 +116,16 @@ $(document).ready(function() {
             url: formUrl,
             method: formMethod,
             data: formData,
+            processData: false,
+            contentType: false,
             success: function(result) {
                 $('#productModal').modal('hide');
                 fetchProducts();
                 $('#productForm')[0].reset();
                 $('#product_id').val('');
+            },
+            error: function(xhr, status, error) {
+                console.error('Error occurred:', xhr.responseText);
             }
         });
     });
@@ -149,4 +164,5 @@ $(document).ready(function() {
     fetchProducts();
 });
 </script>
-
+</body>
+</html>
