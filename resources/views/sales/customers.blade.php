@@ -1,31 +1,29 @@
-<div class="">
-    <div class=" mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card mb-grid">
-                    <div class="card-header">
-                        <div class="card-header-title">
-                            <i class="io io-list"></i> Customers List
-                        </div>
-                        <button class="btn btn-primary mb-3 float-right" data-toggle="modal" data-target="#customerModal">Add New Customer</button>
+<div class=" mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-grid">
+                <div class="card-header">
+                    <div class="card-header-title">
+                        <i class="io io-list"></i> Customers List
                     </div>
-                    <div class="table-responsive-md">
-                        <table class="table table-actions table-striped table-hover mb-0" id="customersTable" data-table>
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="customersBody">
-                                <!-- Data will be loaded here by jQuery -->
-                            </tbody>
-                        </table>
-                    </div>
+                    <button class="btn btn-primary mb-3 float-right" data-toggle="modal" data-target="#customerModal">Add New Customer</button>
+                </div>
+                <div class="table-responsive-md">
+                    <table class="table table-actions table-striped table-hover mb-0" id="customersTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customersBody">
+                            <!-- Data will be loaded here by jQuery -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -33,7 +31,7 @@
 
     <!-- Add/Edit Customer Modal -->
     <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg  modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="customerModalLabel">Add New Customer</h5>
@@ -115,12 +113,25 @@ $(document).ready(function() {
             data: formData,
             success: function() {
                 $('#customerModal').modal('hide');
-                fetchCustomers();
-                $('#customerForm')[0].reset();
-                $('#customer_id').val('');
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Customer information has been saved successfully!',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    fetchCustomers();
+                    $('#customerForm')[0].reset();
+                    $('#customer_id').val('');
+                });
             },
             error: function(xhr) {
-                console.error('Error occurred:', xhr.responseText);
+                $('#customerModal').modal('hide');
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to save the customer information.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             }
         });
     });
@@ -138,19 +149,40 @@ $(document).ready(function() {
     };
 
     window.deleteCustomer = function(id) {
-        $.ajax({
-            url: '/customers/' + id,
-            method: 'DELETE',
-            success: function() {
-                fetchCustomers();
-            },
-            error: function(xhr) {
-                console.error('Error occurred:', xhr.responseText);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '/customers/' + id,
+                    method: 'DELETE',
+                    success: function() {
+                        Swal.fire(
+                            'Deleted!',
+                            'The customer has been deleted.',
+                            'success'
+                        );
+                        fetchCustomers();
+                    },
+                    error: function(xhr) {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Failed to delete the customer.',
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                });
             }
         });
     };
 
     fetchCustomers();
 });
-
 </script>

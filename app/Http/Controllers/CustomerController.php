@@ -10,7 +10,7 @@ class CustomerController extends Controller
   // Get all customers
   public function index()
   {
-      $customers = Customer::all();
+      $customers = Customer::latest()->get();
       return response()->json($customers);
   }
 
