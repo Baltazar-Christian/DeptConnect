@@ -1,5 +1,5 @@
 <div class="">
-    <div class="p-4 mt-5">
+    <div class=" mt-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-grid">
