@@ -1,64 +1,62 @@
-<div class="row">
 
-<div class="col-md-8">
+<div class=" mt-5">
     <div class="row">
-        <div class="col">
-          <div class="card mb-grid">
-            <div class="card-header">
-            <div class="card-header-title"> <i class="io io-list" ></i> Pospects List</div>
+        <div class="col-md-12">
+            <div class="card mb-grid">
+                <div class="card-header">
+                    <div class="card-header-title">
+                        <i class="io io-list"></i> Prospects List
+                    </div>
+                    <button class="btn btn-primary mb-3 float-right" onclick="showAddModal()">Add New Prospect</button>
+                </div>
+                <div class="table-responsive-md">
+                    <table class="table table-actions table-striped table-hover mb-0" id="prospectsTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Customer ID</th>
+                                <th scope="col">Payment Amount</th>
+                                <th scope="col">Installment Plan</th>
+                                <th scope="col">Credit Form URL</th>
+                                <th scope="col">Prospect Type</th>
+                                <th scope="col">Paid Amount</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Payment Deadline</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="prospectsBody">
+                            <!-- Data will be loaded here by jQuery -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="table-responsive-md">
-              <table class="table table-actions table-striped table-hover mb-0" data-table>
-                <thead>
-                  <tr>
-                    <th scope="col">
-                      <label class="custom-control custom-checkbox m-0 p-0">
-                        <input type="checkbox" class="custom-control-input table-select-all">
-                        <span class="custom-control-indicator"></span>
-                      </label>
-                    </th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Username</th>
-                    <th scope="col">Roles</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-</div>
-
-<div class="col-md-4">
-    <div class="card">
-             <div class="card-header">
-            <div class="card-header-title"> <i class="io io-list" ></i> New Pospect Form </div>
-            </div>
-        <div class="card-body">
-        <form>
-            <div class="form-group">
-              <label class="form-label" for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Remember me</label>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
         </div>
     </div>
 
+    <!-- Add/Edit Prospect Modal -->
+    <div class="modal fade" id="prospectModal" tabindex="-1" role="dialog" aria-labelledby="prospectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="prospectModalLabel">Add New Prospect</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="prospectForm">
+                    <div class="modal-body">
+                        <input type="hidden" id="prospect_id" name="prospect_id">
+                        <!-- Add fields here similar to the Customer example -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Prospect</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
-</div>
+<script src=" {{ asset('js/prospectManagement.js') }} "></script>
