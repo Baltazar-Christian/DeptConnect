@@ -50,7 +50,7 @@
                 </div>
                 <div class="card-body">
                     <div class="card-info-title">Credit Sales</div>
-                    <h3 class="card-title mb-0">
+                    <h3 class="card-title mb-0 text-light">
                         768
                     </h3>
                 </div>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="card-body">
                     <div class="card-info-title">Cash Sales</div>
-                    <h3 class="card-title mb-0">
+                    <h3 class="card-title mb-0 text-light">
                         1,258
                     </h3>
                 </div>
@@ -76,6 +76,15 @@
 </div>
 {{-- ./ --}}
 
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<!-- CSS -->
+	<link rel="stylesheet" href=" {{ asset('vendors/styles/style.css')}}">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
 {{-- start of tabs section --}}
 <div>
     <div class="card mb-grid ">
