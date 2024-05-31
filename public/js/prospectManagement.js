@@ -28,42 +28,69 @@ $(document).ready(function() {
     fetchProductsForProspects();
     fetchProspects();
 
-    $('#prospectForm').submit(function(e) {
-        e.preventDefault();
-        var formData = gatherFormData();
-        var prospectId = $('#prospect_id').val();
-        var url = prospectId ? `/prospects/${prospectId}` : '/prospects';
-        var method = prospectId ? 'PUT' : 'POST';
+    $(document).ready(function() {
+        $('#prospectForm').submit(function(e) {
+            e.preventDefault();
 
-        $.ajax({
-            url: url,
-            method: method,
-            data: formData,
-            success: function(response) {
-                $('#prospectModal').modal('hide');
-                Swal.fire('Success', 'Prospect data saved successfully!', 'success');
-                resetProspectForm();
-                fetchProspects();
-            },
-            error: function(xhr) {
-                Swal.fire('Error', 'Failed to save prospect data.', 'error');
-            }
+            // Gather data from the form
+            var formData = gatherFormData();
+            var prospectId = $('#prospect_id').val();
+            var url = prospectId ? `/prospects/${prospectId}` : '/prospects';
+            var method = prospectId ? 'PUT' : 'POST';
+
+            // Perform the AJAX request
+            $.ajax({
+                url: url,
+                method: method,
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                success: function(response) {
+                    // Close the modal and show a success message
+                    $('#prospectModal').modal('hide');
+                    Swal.fire('Success', 'Prospect data saved successfully!', 'success');
+
+                    // Reset form fields and fetch new list of prospects
+                    resetProspectForm();
+                    fetchProspects();
+                },
+                error: function(xhr) {
+                    // Extract error message from response and show an error alert
+                    var message = xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : 'Failed to save prospect data.';
+                    Swal.fire('Error', message, 'error');
+                }
+            });
         });
+
+        function gatherFormData() {
+            // Construct data object from form fields
+            return {
+                customer_id: $('#prospect_customer_id').val(),
+                products: $('#prospect_products').val(), // Assumes this is a multi-select input
+                payment_amount: $('#payment_amount').val(),
+                installment_plan: $('#installment_plan').val(),
+                credit_form_url: $('#credit_form_url').val(),
+                prospect_type: $('#prospect_type').val(),
+                paid_amount: $('#paid_amount').val(),
+                status: $('#status').val(),
+                payment_deadline: $('#payment_deadline').val()
+            };
+        }
+
+        function resetProspectForm() {
+            // Reset all form fields
+            $('#prospectForm')[0].reset();
+            $('#prospect_customer_id').val(null).trigger('change'); // Reset and trigger change for Select2
+            $('#prospect_products').val(null).trigger('change'); // Reset and trigger change for Select2
+        }
+
+        function fetchProspects() {
+            // Reload or refresh the prospect data list
+            // This might involve making another AJAX call to fetch and render prospects
+            console.log('Fetching updated list of prospects...');
+        }
     });
 
-    function gatherFormData() {
-        return {
-            'customer_id': $('#prospect_customer_id').val(),
-            'products': $('#prospect_products').val(),
-            'payment_amount': $('#payment_amount').val(),
-            'installment_plan': $('#installment_plan').val(),
-            'credit_form_url': $('#credit_form_url').val(),
-            'prospect_type': $('#prospect_type').val(),
-            'paid_amount': $('#paid_amount').val(),
-            'status': $('#status').val(),
-            'payment_deadline': $('#payment_deadline').val()
-        };
-    }
+
 });
 
 // Load customers and products

@@ -11,6 +11,10 @@ class Prospect extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'customer_id', 'payment_amount', 'installment_plan',
+        'credit_form_url', 'prospect_type', 'paid_amount', 'status', 'payment_deadline'
+    ];
 
     public function items()
 {

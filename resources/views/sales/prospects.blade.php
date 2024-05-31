@@ -61,7 +61,8 @@
                                 <!-- Customer options will be loaded here -->
                             </select>
                         </div>
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-12
+                        ">
                             <label for="prospect_products">Products</label>
                             <select class="form-control select2" id="prospect_products" name="products[]" multiple="multiple">
                                 <!-- Product options will be loaded here -->
