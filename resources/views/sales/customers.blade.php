@@ -1,4 +1,4 @@
-<div class=" mt-5">
+<div class="mt-5">
     <div class="row">
         <div class="col-md-12">
             <div class="card mb-grid">
@@ -30,7 +30,7 @@
     </div>
 
     <!-- Add/Edit Customer Modal -->
-    <div class="modal " id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerModalLabel" aria-hidden="true">
+    <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -100,46 +100,42 @@ $(document).ready(function() {
             }
         });
     }
-    $('#customerForm').submit(function(e) {
-    e.preventDefault();
-    var formData = $(this).serialize();
-    var customerUrl = $('#customer_id').val() ? '/customers/' + $('#customer_id').val() : '/customers';
-    var method = $('#customer_id').val() ? 'PUT' : 'POST';
 
-    $.ajax({
-        url: customerUrl,
-        method: method,
-        data: formData,
-        beforeSend: function() {
-            $('#customerModal').modal('hide');  // Hide the modal immediately
-        },
-        success: function() {
-            setTimeout(() => {  // Delay the alert until the modal is fully hidden
+    $('#customerForm').submit(function(e) {
+        e.preventDefault();
+        var formData = $(this).serialize();
+        var customerUrl = $('#customer_id').val() ? '/customers/' + $('#customer_id').val() : '/customers';
+        var method = $('#customer_id').val() ? 'PUT' : 'POST';
+
+        $.ajax({
+            url: customerUrl,
+            method: method,
+            data: formData,
+            beforeSend: function() {
+                $('#customerModal').modal('hide');
+            },
+            success: function() {
+                fetchCustomers();
                 Swal.fire({
                     title: 'Success!',
                     text: 'Customer information has been saved successfully!',
                     icon: 'success',
                     confirmButtonText: 'OK'
-                }).then((result) => {
-                    fetchCustomers();
-                    $('#customerForm')[0].reset();
-                    $('#customer_id').val('');
                 });
-            }, 500);  // Adjust timing as needed
-        },
-        error: function(xhr) {
-            Swal.fire({
-                title: 'Error!',
-                text: 'Failed to save the customer information.',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
-        }
+                $('#customerForm')[0].reset();
+                $('#customer_id').val('');
+                $('.modal-backdrop').remove(); // Ensure the backdrop is removed
+            },
+            error: function(xhr) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to save the customer information.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        });
     });
-});
-
-
-
 
     window.editCustomer = function(id) {
         $.get('/customers/' + id, function(customer) {
@@ -187,7 +183,6 @@ $(document).ready(function() {
             }
         });
     };
-    $('.modal-backdrop').remove();  // Forcefully remove any modal backdrops
 
     fetchCustomers();
 });
