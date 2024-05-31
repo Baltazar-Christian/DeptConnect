@@ -121,16 +121,29 @@ $(document).ready(function() {
         method: 'PUT',  // Specify the method to be PUT for updates
         data: formData,
         success: function(response) {
-            $('#productModal').modal('hide');  // Hide the modal on success
-            fetchProducts();  // Optionally, refresh the list of products
-            alert('Product updated successfully!');
+            Swal.fire({
+                title: 'Success!',
+                text: 'Product updated successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#productModal').modal('hide');  // Hide the modal on success
+                    fetchProducts();  // Optionally, refresh the list of products
+                }
+            });
         },
         error: function(xhr) {
-            console.error('Error updating product: ' + xhr.responseText);
-            alert('Error updating product. Please try again.');
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error updating product. Please try again.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
         }
     });
 });
+
 
     window.editProduct = function(id) {
     $.get('/products/' + id, function(product) {
