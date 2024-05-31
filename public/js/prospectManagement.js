@@ -83,10 +83,36 @@ $(document).ready(function() {
             $('#prospect_products').val(null).trigger('change'); // Reset and trigger change for Select2
         }
 
+
         function fetchProspects() {
-            // Reload or refresh the prospect data list
-            // This might involve making another AJAX call to fetch and render prospects
-            console.log('Fetching updated list of prospects...');
+            $.ajax({
+                url: '/prospects',  // Adjust if your API path is different
+                method: 'GET',
+                success: function(data) {
+                    var tableBody = $('#prospectsBody');
+                    tableBody.empty(); // Clear existing rows
+
+                    $.each(data, function(index, prospect) {
+                        tableBody.append(
+                            '<tr>' +
+                            '<td>' + prospect.id + '</td>' +
+                            '<td>' + prospect.customer_id + '</td>' +
+                            '<td>' + prospect.payment_amount.toFixed(2) + '</td>' +
+                            '<td>' + prospect.installment_plan + '</td>' +
+                            '<td><a href="' + prospect.credit_form_url + '" target="_blank">View Form</a></td>' +
+                            '<td>' + prospect.prospect_type + '</td>' +
+                            '<td>' + prospect.paid_amount.toFixed(2) + '</td>' +
+                            '<td>' + prospect.status + '</td>' +
+                            '<td>' + new Date(prospect.payment_deadline).toLocaleDateString() + '</td>' +
+                            '<td>Edit/Delete</td>' + // Add links or buttons for actions
+                            '</tr>'
+                        );
+                    });
+                },
+                error: function(error) {
+                    console.log('Error fetching prospects:', error);
+                }
+            });
         }
     });
 

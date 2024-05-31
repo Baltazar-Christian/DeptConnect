@@ -11,7 +11,7 @@ class ProspectController extends Controller
 {
     public function index()
     {
-        $prospects = Prospect::with(['items', 'installments'])->get();
+        $prospects = Prospect::all();
         return response()->json($prospects);
     }
 
