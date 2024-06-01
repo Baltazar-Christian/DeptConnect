@@ -79,28 +79,28 @@ $(document).ready(function() {
     });
 
 
-    var customerTable = $('#customersTable').DataTable({
-            "processing": true,
-            "serverSide": true,
-            "ajax": {
-                "url": "/customers", // Replace with Laravel route, e.g., '{{ route('customers.index') }}'
-                "type": "GET",
-                "dataSrc": function(json) {
-                    return json.data;
-                }
-            },
-            "columns": [
-                { "data": "id" },
-                { "data": "name" },
-                { "data": "email" },
-                { "data": "phone" },
-                { "data": "address" },
-                { "data": null, "sortable": false, "render": function(data, type, row) {
-                    return `<button onclick="editCustomer(${row.id})" class="btn btn-info btn-sm">Edit</button>
-                            <button onclick="deleteCustomer(${row.id})" class="btn btn-danger btn-sm">Delete</button>`;
-                }}
-            ]
-        });
+    // var customerTable = $('#customersTable').DataTable({
+    //         "processing": true,
+    //         "serverSide": true,
+    //         "ajax": {
+    //             "url": "/customers", // Replace with Laravel route, e.g., '{{ route('customers.index') }}'
+    //             "type": "GET",
+    //             "dataSrc": function(json) {
+    //                 return json.data;
+    //             }
+    //         },
+    //         "columns": [
+    //             { "data": "id" },
+    //             { "data": "name" },
+    //             { "data": "email" },
+    //             { "data": "phone" },
+    //             { "data": "address" },
+    //             { "data": null, "sortable": false, "render": function(data, type, row) {
+    //                 return `<button onclick="editCustomer(${row.id})" class="btn btn-info btn-sm">Edit</button>
+    //                         <button onclick="deleteCustomer(${row.id})" class="btn btn-danger btn-sm">Delete</button>`;
+    //             }}
+    //         ]
+    //     });
 
     function fetchCustomers() {
         $.ajax({
