@@ -10,19 +10,18 @@
                 <div class="table-responsive-md">
                   <table class="table table-actions table-striped table-hover mb-0" data-table>
                     <thead>
-                      <tr>
-                        <th scope="col">
-                          <label class="custom-control custom-checkbox m-0 p-0">
-                            <input type="checkbox" class="custom-control-input table-select-all">
-                            <span class="custom-control-indicator"></span>
-                          </label>
-                        </th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Roles</th>
-                        <th scope="col">Actions</th>
-                      </tr>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Customer </th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Installment </th>
+                            <th scope="col">Credit Form URL</th>
+                            <th scope="col">Prospect Type</th>
+                            <th scope="col">Paid Amount</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Payment Deadline</th>
+                            <th scope="col">Actions</th>
+                        </tr>
                     </thead>
                     <tbody></tbody>
                   </table>

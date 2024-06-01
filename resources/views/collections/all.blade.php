@@ -13,7 +13,7 @@
                       <thead>
                           <tr>
                               <th scope="col">ID</th>
-                              <th scope="col">Customer ID</th>
+                              <th scope="col">Customer </th>
                               <th scope="col">Payment Amount</th>
                               <th scope="col">Installment Plan</th>
                               <th scope="col">Credit Form URL</th>
