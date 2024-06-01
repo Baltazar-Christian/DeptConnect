@@ -99,7 +99,7 @@
   // Fetching prospects and populating the table
   function fetchProspects() {
       $.ajax({
-          url: '/prospects',
+          url: '/prospects/all_credits',
           method: 'GET',
           success: function(data) {
               var tableBody = $('#prospectsBody');
