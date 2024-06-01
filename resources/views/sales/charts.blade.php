@@ -184,70 +184,75 @@
         {{-- <div id="chartPreferences" style="width:100%; height:400px;"></div> --}}
 
         <script>
-            function drawHoursChart(type) {
-                Highcharts.chart('chartHours', {
-                    chart: {
-                        type: type
-                    },
-                    title: {
-                        text: 'Hourly Sales Data'
-                    },
-                    xAxis: {
-                        categories: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM']
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Sales'
-                        }
-                    },
-                    series: [{
-                        name: 'Series 1',
-                        data: [287, 385, 490, 492, 554, 586, 698, 695, 752, 788, 846, 944],
-                        color: '#00BFFF'
-                    }, {
-                        name: 'Series 2',
-                        data: [67, 152, 143, 240, 287, 335, 435, 437, 539, 542, 544, 647],
-                        color: '#FF6347'
-                    }, {
-                        name: 'Series 3',
-                        data: [23, 113, 67, 108, 190, 239, 307, 308, 439, 410, 410, 509],
-                        color: '#32CD32'
-                    }]
-                });
-            }
 
-            function drawActivityChart(type) {
-                Highcharts.chart('chartActivity', {
-                    chart: {
-                        type: type
-                    },
+       function drawChart(type) {Highcharts.chart('chartHours', {
+                chart: {
+                    type: type  // Dynamic chart type based on button click
+                },
+                title: {
+                    text: 'Hourly Sales Data'
+                },
+                xAxis: {
+                    categories: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM']
+                },
+                yAxis: {
                     title: {
-                        text: 'Monthly Activity'
-                    },
-                    xAxis: {
-                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                    },
-                    yAxis: {
-                        min: 0,
-                        title: {
-                            text: 'Activity'
-                        }
-                    },
-                    series: [{
-                        name: 'Series 1',
-                        data: [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
-                        color: '#008080'
-                    }, {
-                        name: 'Series 2',
-                        data: [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695],
-                        color: '#FFD700'
-                    }]
-                });
-            }
+                        text: 'Sales'
+                    }
+                },
+                series: [{
+                    name: 'Series 1',
+                    data: [287, 385, 490, 492, 554, 586, 698, 695, 752, 788, 846, 944],
+                    color: '#00BFFF'
+                }, {
+                    name: 'Series 2',
+                    data: [67, 152, 143, 240, 287, 335, 435, 437, 539, 542, 544, 647],
+                    color: '#FF6347'
+                }, {
+                    name: 'Series 3',
+                    data: [23, 113, 67, 108, 190, 239, 307, 308, 439, 410, 410, 509],
+                    color: '#32CD32'
+                }]
+            });
+        }
 
-            // Initial draw of charts
-            drawHoursChart('line');
-            drawActivityChart('column');
+        // Initial draw of the line chart
+        drawChart('line');
+        drawActivityChart('column');
+
+        function drawActivityChart(type) {
+            Highcharts.chart('chartActivity', {
+                chart: {
+                    type: type
+                },
+                title: {
+                    text: 'Monthly Activity'
+                },
+                xAxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Activity'
+                    }
+                },
+                series: [{
+                    name: 'Series 1',
+                    data: [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
+                    color: '#008080'
+                }, {
+                    name: 'Series 2',
+                    data: [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695],
+                    color: '#FFD700'
+                }]
+            });
+        }
+
+        // Initial draw of charts
+        drawHoursChart('line');
+        drawActivityChart('column');
+
 
             Highcharts.chart('chartPreferences', {
                 chart: {

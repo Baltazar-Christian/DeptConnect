@@ -150,7 +150,7 @@
                     </style>
 
                     <div class=" ">
-                        <h4 class="mb-4">Sales Department Report</h4>
+                        <h4 class="mb-4 text-center">Sales Department Report</h4>
                         <div class="col-md-8 mx-auto">
                             <div class="card">
                                 <div class="card-body">
