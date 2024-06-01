@@ -89,7 +89,7 @@
 <div>
     <div class="card mb-grid">
         <div class="card-header">
-            <ul class="nav nav-pills card-header-pills1" role="tablist">
+            <ul class="nav nav-pills card-header-pills" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="card-tab-6" data-toggle="tab" href="#card-tab-content-6"
                         role="tab" aria-controls="card-tab-content-6" aria-selected="true">Charts</a>
