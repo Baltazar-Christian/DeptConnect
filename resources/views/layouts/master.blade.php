@@ -124,6 +124,8 @@
                 // ordering: false,
                 // Initialize responsive extension if you are using it
                 responsive: true
+            //     "processing": true,
+            // "serverSide": true,
             });
 
             // Uncomment the following lines if you want to re-enable the custom search functionality

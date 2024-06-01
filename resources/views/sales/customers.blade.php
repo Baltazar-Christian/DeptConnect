@@ -1,3 +1,4 @@
+
 <div class="mt-5">
     <div class="row">
         <div class="col-md-12">
@@ -9,7 +10,7 @@
                     <button class="btn btn-primary mb-3 float-right" data-toggle="modal" data-target="#customerModal">Add New Customer</button>
                 </div>
                 <div class="table-responsive-md">
-                    <table data-table="true" class="table table-actions table-bordered table-striped table-hover table-hover mb-0" id="customersTable">
+                    <table data-table="true" class="table table-actions table-bordered table-striped table-hover mb-0" id="customersTable">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
@@ -76,6 +77,30 @@ $(document).ready(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+
+    var customerTable = $('#customersTable').DataTable({
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "/customers", // Replace with Laravel route, e.g., '{{ route('customers.index') }}'
+                "type": "GET",
+                "dataSrc": function(json) {
+                    return json.data;
+                }
+            },
+            "columns": [
+                { "data": "id" },
+                { "data": "name" },
+                { "data": "email" },
+                { "data": "phone" },
+                { "data": "address" },
+                { "data": null, "sortable": false, "render": function(data, type, row) {
+                    return `<button onclick="editCustomer(${row.id})" class="btn btn-info btn-sm">Edit</button>
+                            <button onclick="deleteCustomer(${row.id})" class="btn btn-danger btn-sm">Delete</button>`;
+                }}
+            ]
+        });
 
     function fetchCustomers() {
         $.ajax({
