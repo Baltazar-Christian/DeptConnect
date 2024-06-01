@@ -65,10 +65,10 @@
                     <!-- BreadCrumb -->
                     <div class="card  p-2">
                         <nav aria-label="breadcrumb" role="navigation">
-                            <ol class="breadcrumb adminx-page-breadcrumb">
+                            {{-- <ol class="breadcrumb adminx-page-breadcrumb">
                               <li class="breadcrumb-item"><a href="#">Home</a></li>
                               <li class="breadcrumb-item active" aria-current="page">@yield('page')</li>
-                            </ol>
+                            </ol> --}}
                           </nav>
 
                     </div>

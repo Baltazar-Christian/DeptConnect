@@ -3,9 +3,9 @@
 Dashboard
 @endsection
 
-@section('page')
+{{-- @section('page')
     Page
-@endsection
+@endsection --}}
 @section('content')
 
 

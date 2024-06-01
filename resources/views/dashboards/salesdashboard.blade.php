@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="progress mt-auto">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0"
+                    <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0"
                         aria-valuemax="100">3/4</div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="progress mt-auto">
-                    <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="75"
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 60%;" aria-valuenow="75"
                         aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
