@@ -15,6 +15,40 @@ class ProspectController extends Controller
         return response()->json($prospects);
     }
 
+
+    public function all_credits()
+    {
+        $credits = Prospect::where('prospect_type', 'credit')->with('customer')->get();
+        return response()->json($credits);
+    }
+
+    public function unpaid_credits()
+    {
+        $unpaid = Prospect::where('prospect_type', 'credit')
+                          ->where('status', 'unpaid')
+                          ->with('customer')
+                          ->get();
+        return response()->json($unpaid);
+    }
+
+    public function onprogress_credits()
+    {
+        $onProgress = Prospect::where('prospect_type', 'credit')
+                              ->where('status', 'partially paid')
+                              ->with('customer')
+                              ->get();
+        return response()->json($onProgress);
+    }
+
+    public function closed_credits()
+    {
+        $closed = Prospect::where('prospect_type', 'credit')
+                          ->where('status', 'closed')
+                          ->with('customer')
+                          ->get();
+        return response()->json($closed);
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([

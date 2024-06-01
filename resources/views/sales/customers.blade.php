@@ -23,6 +23,7 @@
                         </thead>
                         <tbody id="customersBody">
                             <!-- Data will be loaded here by jQuery -->
+                            
                         </tbody>
                     </table>
                 </div>
