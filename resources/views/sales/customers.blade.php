@@ -78,7 +78,6 @@ $(document).ready(function() {
         }
     });
 
-
     // var customerTable = $('#customersTable').DataTable({
     //         "processing": true,
     //         "serverSide": true,
