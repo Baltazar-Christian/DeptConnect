@@ -193,8 +193,61 @@
 
 
                 <div class="tab-pane fade" id="card-tab-content-3" role="tabpanel" aria-labelledby="card-tab-3">
-                    <h4 class="card-title">Reports</h4>
+                    <style>
+                        @media print {
+                            .no-print {
+                                display: none;
+                            }
+                            .print-area {
+                                display: block;
+                            }
+                        }
+                    </style>
 
+                    <div class=" ">
+                        <h4 class="mb-4 text-center">Collection Department Report</h4>
+                        <div class="col-md-8 mx-auto">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group no-print">
+                                                <label for="startDate">Start Date:</label>
+                                                <input type="date" class="form-control" id="startDate" name="startDate">
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group no-print">
+                                                <label for="endDate">End Date:</label>
+                                                <input type="date" class="form-control" id="endDate" name="endDate">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button onclick="printReport()" class="btn btn-primary float-right no-print">Print Report</button>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="print-area mt-5">
+                            <h2>Report from <span id="displayStartDate"></span> to <span id="displayEndDate"></span></h2>
+                            <!-- Placeholder for report data -->
+                            <p>This section will dynamically display collections data between selected dates.</p>
+                        </div>
+                    </div>
+
+                    <script>
+                        function printReport() {
+                            var startDate = document.getElementById('startDate').value;
+                            var endDate = document.getElementById('endDate').value;
+                            document.getElementById('displayStartDate').textContent = startDate;
+                            document.getElementById('displayEndDate').textContent = endDate;
+                            window.print();
+                        }
+                    </script>
                 </div>
             </div>
         </div>
