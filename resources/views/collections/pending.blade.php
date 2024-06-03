@@ -5,7 +5,11 @@
             <div class="col">
               <div class="card mb-grid">
                 <div class="card-header">
-                <div class="card-header-title"> <i class="io io-list" ></i> Closed Collections</div>
+                    <div class="card-header-title">
+                        <i class="io io-list"></i> Unscanned  Collections
+                    </div>
+                    <button class="btn btn-primary float-right" onclick="showAddModal()">New Collection</button>
+                </div>
                 </div>
                 <div class="table-responsive-md">
                   <table class="table table-actions table-striped table-hover mb-0" data-table>
