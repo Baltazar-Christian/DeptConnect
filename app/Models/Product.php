@@ -14,7 +14,7 @@ class Product extends Model
     // Define the many-to-many relationship with the Prospect model
     public function prospects()
     {
-        return $this->belongsToMany(Prospect::class, 'prospect_product', 'product_id', 'prospect_id');
+        return $this->belongsToMany(Prospect::class, 'prospect_items', 'product_id', 'prospect_id');
     }
 
 }

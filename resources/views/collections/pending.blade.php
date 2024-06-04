@@ -8,7 +8,8 @@
                     <div class="card-header-title">
                         <i class="io io-list"></i> Unscanned  Collections
                     </div>
-                    <button class="btn btn-primary float-right" onclick="showAddModal()">New Collection</button>
+                    {{-- <button class="btn btn-primary float-right" onclick="showAddModal()">New Collection</button> --}}
+                    <a href="{{ route('collection-form') }}" class="btn btn-primary float-right">Collection Form</a>
                 </div>
                 </div>
                 <div class="table-responsive-md">

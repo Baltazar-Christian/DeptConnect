@@ -35,3 +35,6 @@ Route::get('/prospects/unpaid_credits', [ProspectController::class, 'unpaid_cred
 Route::get('/prospects/onprogress_credits', [ProspectController::class, 'onprogress_credits']);
 Route::get('/prospects/closed_credits', [ProspectController::class, 'closed_credits']);
 Route::resource('prospects', ProspectController::class);
+
+
+Route::get('/collection-form', [App\Http\Controllers\CollectionController::class, 'index'])->name('collection-form');
