@@ -19,6 +19,7 @@
                             <th>Customer Name</th>
                             <th>Purchase Date</th>
                             <th>Total Amount</th>
+                            <th>Installment Plan</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -28,7 +29,8 @@
                             <td>{{ $collection->customer_name }}</td>
                             <td>{{ $collection->purchase_date }}</td>
                             <td>{{ $collection->total_amount }}</td>
-                            <td width="10%">
+                            <td>{{ $collection->installment_plan }}</td>
+                            <td width="15%">
                                 <div class="row">
                                     <a href="{{ route('collections.show', $collection->id) }}" class="btn btn-primary btn-sm ">View</a>
                                     <a href="{{ route('collections.edit', $collection->id) }}" class="btn btn-info btn-sm mx-2">Edit</a>
