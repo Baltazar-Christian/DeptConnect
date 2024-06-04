@@ -9,14 +9,23 @@ use Illuminate\Http\Request;
 
 class CollectionController extends Controller
 {
+
+
     public function index()
     {
-        $data['customers']=Customer::latest()->get();
-        $data['products']=Product::latest()->get();
-        return view('collection_form',$data);
+        $collections = Collection::all();
+        return view('collections', compact('collections'));
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('collection_form');
+    }
 
     public function store(Request $request)
     {
@@ -44,4 +53,16 @@ class CollectionController extends Controller
         return redirect()->route('collections.index')->with('success', 'Collection created successfully!');
     }
 
+    public function show(Collection $collection) // Retrieving collection by ID
+    {
+        return view('collection_detail', compact('collection'));
+    }
+
+
+    public function destroy($id) // Retrieving collection by ID
+    {
+        $collection=Collection::where('id',$id)->first();
+        $collection->delete();
+        return redirect()->route('collections.index')->with('success', 'Collection deleted successfully!');
+    }
 }

@@ -132,7 +132,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " id="card-tab-1" data-toggle="tab" href="#card-tab-content-1"
-                        role="tab" aria-controls="card-tab-content-1" aria-selected="true">All Collections</a>
+                        role="tab" aria-controls="card-tab-content-1" aria-selected="true">All Prospects</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-2" role="tab"
