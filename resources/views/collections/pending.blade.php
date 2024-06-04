@@ -28,14 +28,17 @@
                             <td>{{ $collection->customer_name }}</td>
                             <td>{{ $collection->purchase_date }}</td>
                             <td>{{ $collection->total_amount }}</td>
-                            <td>
-                                <a href="{{ route('collections.show', $collection->id) }}" class="btn btn-primary btn-sm">View</a>
-                                <a href="{{ route('collections.edit', $collection->id) }}" class="btn btn-info btn-sm">Edit</a>
-                                <form action="{{ route('collections.destroy', $collection->id) }}" method="POST" style="display: inline-line">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                </form>
+                            <td width="10%">
+                                <div class="row">
+                                    <a href="{{ route('collections.show', $collection->id) }}" class="btn btn-primary btn-sm ">View</a>
+                                    <a href="{{ route('collections.edit', $collection->id) }}" class="btn btn-info btn-sm mx-2">Edit</a>
+                                    <form action="{{ route('collections.destroy', $collection->id) }}" method="POST" style="display: inline-line">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </div>
+
                             </td>
                         </tr>
                         @endforeach

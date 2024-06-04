@@ -136,7 +136,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-2" role="tab"
-                        aria-controls="card-tab-1" aria-selected="false">Unscanned Accounts</a>
+                        aria-controls="card-tab-1" aria-selected="false">Collections</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="card-tab-2" data-toggle="tab" href="#card-tab-content-4" role="tab"

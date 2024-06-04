@@ -50,11 +50,13 @@ class CollectionController extends Controller
 
         $collection = Collection::create($validatedData);
 
-        return redirect()->route('collections.index')->with('success', 'Collection created successfully!');
+        return redirect()->route('home')->with('success', 'Collection created successfully!');
     }
 
-    public function show(Collection $collection) // Retrieving collection by ID
+    public function show( $id) // Retrieving collection by ID
     {
+        $collection=Collection::where('id',$id)->first();
+
         return view('collection_detail', compact('collection'));
     }
 
@@ -63,6 +65,6 @@ class CollectionController extends Controller
     {
         $collection=Collection::where('id',$id)->first();
         $collection->delete();
-        return redirect()->route('collections.index')->with('success', 'Collection deleted successfully!');
+        return redirect()->route('home')->with('success', 'Collection deleted successfully!');
     }
 }

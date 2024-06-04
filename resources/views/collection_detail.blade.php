@@ -5,9 +5,14 @@ View Collection
 @endsection
 
 @section('content')
-<h1>Collection Details</h1>
 
+<div class="mb-3">
+    <h5>Collection Details</h5>
+    <a href="{{ url('home') }}" class="btn  btn-primary ">Back</a>
+
+</div>
 <div class="card">
+
     <div class="card-body">
         <ul class="list-group">
             <li class="list-group-item">Customer Name: {{ $collection->customer_name }}</li>
@@ -29,7 +34,7 @@ View Collection
            <li class="list-group-item">Branch Name: {{ $collection->branch_name }}</li>
             <li class="list-group-item">Company Name: {{ $collection->company_name }}</li>
         </ul>
-        <a href="{{ route('collections.edit', $collection->id) }}" class="btn btn-primary">Edit</a>
+        {{-- <a href="{{ route('collections.edit', $collection->id) }}" class="btn btn-primary">Edit</a> --}}
     </div>
 </div>
 
