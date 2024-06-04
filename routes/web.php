@@ -38,3 +38,4 @@ Route::resource('prospects', ProspectController::class);
 
 
 Route::get('/collection-form', [App\Http\Controllers\CollectionController::class, 'index'])->name('collection-form');
+Route::post('/collection', [App\Http\Controllers\CollectionController::class, 'store'])->name('collection-save');
