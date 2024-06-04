@@ -27,4 +27,9 @@ class Collection extends Model
         'branch_name',
         'company_name',
     ];
+
+    public function collectionItems()
+    {
+        return $this->hasManyThrough(Product::class, CollectionItem::class);
+    }
 }

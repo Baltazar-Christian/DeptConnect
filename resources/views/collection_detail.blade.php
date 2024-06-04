@@ -29,11 +29,32 @@ View Collection
             <li class="list-group-item">Second Kin Phone: {{ $collection->kin_phone }}</li>
             <li class="list-group-item">HR Name: {{ $collection->hr_name }}</li>
             <li class="list-group-item">HR Phone: {{ $collection->hr_phone }}</li>
-
-
-           <li class="list-group-item">Branch Name: {{ $collection->branch_name }}</li>
+            <li class="list-group-item">Branch Name: {{ $collection->branch_name }}</li>
             <li class="list-group-item">Company Name: {{ $collection->company_name }}</li>
         </ul>
+
+        <h2>Products</h2>
+
+        @if ($collection->collectionItems->count() > 0)
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($collection->collectionItems as $item)
+                        <tr>
+                            <td>{{ $item->product->name }}</td>  <td>{{ $item->price }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <p>No products associated with this collection.</p>
+        @endif
+
         {{-- <a href="{{ route('collections.edit', $collection->id) }}" class="btn btn-primary">Edit</a> --}}
     </div>
 </div>

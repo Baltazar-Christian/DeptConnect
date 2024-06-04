@@ -6,7 +6,7 @@
               <div class="card mb-grid">
                 <div class="card-header">
                     <div class="card-header-title">
-                        <i class="io io-list"></i> Unscanned  Collections
+                        <i class="io io-list"></i> Collections List
                     </div>
                     {{-- <button class="btn btn-primary float-right" onclick="showAddModal()">New Collection</button> --}}
                     <a href="{{ route('collection-form') }}" class="btn btn-primary float-right">Collection Form</a>

@@ -107,6 +107,38 @@ Collection  Form
                         </div>
 
                     </div>
+
+                    <div class="mb-3">
+                        <h5> <i class="fa fa-list"></i> Products</h5>
+                        <button type="button" class="btn btn-primary " id="add-product-item">Add Another Product</button>
+<hr>
+                    </div>
+
+                    <div id="product-items">
+                        <div class="form-group row">
+                            <div class="col-sm-5">
+                                <label for="products[]" class="form-label">Product</label>
+
+                                <select name="products[]" class="form-control product-select">
+                                    <option value="">Select Product</option>
+                                    @foreach ($products as $product)
+                                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="prices[]" class="form-label">Price</label>
+
+                                <input type="number" name="prices[]" class="form-control product-price" placeholder="Price" required>
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="btn" class="form-label">Action</label>
+                                <br>
+                                <button type="button" id="btn" class="btn btn-danger remove-product-item"><i class="fas fa-minus-circle"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
                     <div class="modal-footer">
                         {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Clo   se</button> --}}
                         <button type="submit" class="btn btn-primary">Save Collection</button>
@@ -116,5 +148,27 @@ Collection  Form
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        var productItemsWrapper = $('#product-items');
+        var maxProductItems = 5; // Adjust as needed
+
+        $('#add-product-item').click(function() {
+            if (productItemsWrapper.children().length < maxProductItems) {
+                var newProductItem = productItemsWrapper.children().first().clone();
+                newProductItem.find('select').val('');
+                newProductItem.find('input[type="number"]').val('');
+                productItemsWrapper.append(newProductItem);
+            } else {
+                alert('Maximum ' + maxProductItems + ' products allowed.');
+            }
+        });
+
+        productItemsWrapper.on('click', '.remove-product-item', function() {
+            $(this).closest('.form-group.row').remove();
+        });
+    });
+    </script>
 
 @endsection

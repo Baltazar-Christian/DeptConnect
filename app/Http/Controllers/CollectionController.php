@@ -24,7 +24,8 @@ class CollectionController extends Controller
      */
     public function create()
     {
-        return view('collection_form');
+        $data['products']=Product::latest()->get();
+        return view('collection_form',$data);
     }
 
     public function store(Request $request)
@@ -48,7 +49,32 @@ class CollectionController extends Controller
             'company_name' => 'required',
         ]);
 
+        $collection = Collection::create($validatedData); $collection = Collection::create($validatedData);
+
+        $productIds = $request->input('products');
+        $prices = $request->input('prices');
+
+        // Loop through product IDs and prices
+        for ($i = 0; $i < count($productIds); $i++) {
+            $collection->collectionItems()->create([
+                'product_id' => $productIds[$i],
+                'price' => $prices[$i],
+            ]);
+        }
+
         $collection = Collection::create($validatedData);
+
+        $productIds = $request->input('products');
+        $prices = $request->input('prices');
+
+        // Loop through product IDs and prices
+        for ($i = 0; $i < count($productIds); $i++) {
+            $collection->collectionItems()->create([
+                'product_id' => $productIds[$i],
+                'price' => $prices[$i],
+            ]);
+        }
+
 
         return redirect()->route('home')->with('success', 'Collection created successfully!');
     }
