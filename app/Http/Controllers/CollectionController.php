@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Collection;
+use App\Models\CollectionItem;
 use App\Models\Customer;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class CollectionController extends Controller
 
     public function index()
     {
-        $collections = Collection::all();
+        $collections = Collection::latest()->get();
         return view('collections', compact('collections'));
     }
 
@@ -49,32 +50,23 @@ class CollectionController extends Controller
             'company_name' => 'required',
         ]);
 
-        $collection = Collection::create($validatedData); $collection = Collection::create($validatedData);
-
-        $productIds = $request->input('products');
-        $prices = $request->input('prices');
-
-        // Loop through product IDs and prices
-        for ($i = 0; $i < count($productIds); $i++) {
-            $collection->collectionItems()->create([
-                'product_id' => $productIds[$i],
-                'price' => $prices[$i],
-            ]);
-        }
-
         $collection = Collection::create($validatedData);
 
-        $productIds = $request->input('products');
-        $prices = $request->input('prices');
+        $productIds = array_filter($request->input('products'), function ($productId) use ($collection) {
+            return Product::find($productId) !== null; // Check if product ID exists
+        });
 
-        // Loop through product IDs and prices
+        $prices = array_slice($request->input('prices'), 0, count($productIds)); // Adjust price array based on filtered IDs
+
+
+        // Loop through product IDs and pricesuse App\Models\Product;
         for ($i = 0; $i < count($productIds); $i++) {
-            $collection->collectionItems()->create([
-                'product_id' => $productIds[$i],
-                'price' => $prices[$i],
-            ]);
+            $collectionItem=new CollectionItem();
+            $collectionItem->collection_id=$collection->id;
+            $collectionItem->product_id=$productIds[$i];
+            $collectionItem->price=$prices[$i];
+            $collectionItem->save();
         }
-
 
         return redirect()->route('home')->with('success', 'Collection created successfully!');
     }
@@ -82,8 +74,9 @@ class CollectionController extends Controller
     public function show( $id) // Retrieving collection by ID
     {
         $collection=Collection::where('id',$id)->first();
+        $products=CollectionItem::where('collection_id',$id)->get();
 
-        return view('collection_detail', compact('collection'));
+        return view('collection_detail', compact('collection','products'));
     }
 
 
