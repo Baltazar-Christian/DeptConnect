@@ -100,23 +100,64 @@ class ProspectController extends Controller
         return response()->json(['message' => 'Prospect saved successfully', 'prospect' => $prospect], 201);
     }
 
+// Update method to handle prospect updates
+public function update(Request $request, $id)
+{
+    $validated = $request->validate([
+        'customer_id' => 'required|exists:customers,id',
+        'products' => 'required|array',
+        'products.*' => 'exists:products,id',
+        'payment_amount' => 'required|numeric',
+        'installment_plan' => 'required|integer',
+        'credit_form_url' => 'nullable|url',
+        'prospect_type' => 'required|string',
+        'paid_amount' => 'nullable|numeric',
+        'status' => 'required|string',
+        'payment_deadline' => 'required|date',
+    ]);
 
-    public function update(Request $request, Prospect $prospect)
-    {
-        $request->validate([
-            'customer_id' => 'required|integer|exists:customers,id',
-            'payment_amount' => 'required|numeric',
-            'installment_plan' => 'required|integer',
-            'credit_form_url' => 'nullable|url',
-            'prospect_type' => 'required|in:presentation,cash,credit',
-            'paid_amount' => 'required|numeric',
-            'status' => 'required|in:presentation,unpaid,full paid,partially paid',
-            'payment_deadline' => 'required|date',
+    $prospect = Prospect::findOrFail($id);
+    $prospect->update([
+        'customer_id' => $validated['customer_id'],
+        'payment_amount' => $validated['payment_amount'],
+        'installment_plan' => $validated['installment_plan'],
+        'credit_form_url' => $validated['credit_form_url'],
+        'prospect_type' => $validated['prospect_type'],
+        'paid_amount' => $validated['paid_amount'],
+        'status' => $validated['status'],
+        'payment_deadline' => $validated['payment_deadline'],
+    ]);
+
+    // Detach existing products
+    $prospect->products()->detach();
+
+    // Handle the multiple products
+    foreach ($validated['products'] as $productId) {
+        $product = Product::find($productId);
+        if (!$product) {
+            return response()->json(['message' => 'Product not found', 'product_id' => $productId], 404);
+        }
+
+        // Assume quantity is 1 for now; adjust as needed if your form sends quantity data
+        $price = $product->price;
+        $totalPayment = $price; // Modify this calculation as needed
+
+        ProspectItem::create([
+            'prospect_id' => $prospect->id,
+            'product_id' => $productId,
+            'price' => $price,
+            'total_payment' => $totalPayment,
         ]);
-
-        $prospect->update($request->all());
-        return response()->json($prospect);
     }
+
+    return response()->json(['message' => 'Prospect updated successfully', 'prospect' => $prospect], 200);
+}
+
+    public function show( $id)
+{
+    $prospect = Prospect::where('id',$id)->with('products')->first();
+    return response()->json($prospect);
+}
 
     public function destroy(Prospect $prospect)
     {

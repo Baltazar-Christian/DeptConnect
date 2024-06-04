@@ -31,4 +31,10 @@ public function installments()
 {
     return $this->hasMany(ProspectInstallment::class);
 }
+
+  // Define the many-to-many relationship with the Product model
+  public function products()
+  {
+      return $this->belongsToMany(Product::class, 'prospect_items', 'prospect_id', 'product_id');
+  }
 }

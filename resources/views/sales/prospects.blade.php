@@ -113,6 +113,61 @@
     </div>
 </div>
 
+
+<!-- Show Prospect Modal -->
+<div class="modal fade" id="showProspectModal" tabindex="-1" aria-labelledby="showProspectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="showProspectModalLabel">Prospect Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Display prospect details here -->
+                <div class="form-group">
+                    <label for="show_customer_name">Customer Name:</label>
+                    <p id="show_customer_name"></p>
+                </div>
+                <div class="form-group">
+                    <label for="show_products">Products:</label>
+                    <p id="show_products"></p>
+                </div>
+                <div class="form-group">
+                    <label for="show_payment_amount">Payment Amount:</label>
+                    <p id="show_payment_amount"></p>
+                </div>
+                <div class="form-group">
+                    <label for="show_installment_plan">Installment Plan:</label>
+                    <p id="show_installment_plan"></p>
+                </div>
+                <div class="form-group">
+                    <label for="show_credit_form_url">Credit Form URL:</label>
+                    <p id="show_credit_form_url"></p>
+                </div>
+                <div class="form-group">
+                    <label for="show_prospect_type">Prospect Type:</label>
+                    <p id="show_prospect_type"></p>
+                </div>
+                <div class="form-group">
+                    <label for="show_paid_amount">Paid Amount:</label>
+                    <p id="show_paid_amount"></p>
+                </div>
+                <div class="form-group">
+                    <label for="show_status">Status:</label>
+                    <p id="show_status"></p>
+                </div>
+                <div class="form-group">
+                    <label for="show_payment_deadline">Payment Deadline:</label>
+                    <p id="show_payment_deadline"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
     $(document).ready(function() {
         // Initialize Select2 inside the modal
@@ -178,6 +233,31 @@
         };
     }
 
+
+    // Show prospect details in a modal
+window.showProspect = function(id) {
+    $.ajax({
+        url: `/prospects/${id}`,
+        method: 'GET',
+        success: function(prospect) {
+            $('#show_customer_name').text(prospect.customer ? prospect.customer.name : 'No Customer');
+            $('#show_products').text(prospect.products.map(product => `${product.name} (${product.price})`).join(', '));
+            $('#show_payment_amount').text(prospect.payment_amount);
+            $('#show_installment_plan').text(prospect.installment_plan);
+            $('#show_credit_form_url').html(prospect.credit_form_url ? `<a href="${prospect.credit_form_url}" target="_blank">${prospect.credit_form_url}</a>` : 'N/A');
+            $('#show_prospect_type').text(prospect.prospect_type);
+            $('#show_paid_amount').text(prospect.paid_amount);
+            $('#show_status').text(prospect.status);
+            $('#show_payment_deadline').text(new Date(prospect.payment_deadline).toLocaleDateString());
+
+            $('#showProspectModal').modal('show');
+        },
+        error: function() {
+            Swal.fire('Error', 'Failed to fetch prospect details.', 'error');
+        }
+    });
+};
+
     // Fetching prospects and populating the table
     function fetchProspects() {
         $.ajax({
@@ -201,6 +281,7 @@
                             <td>${prospect.status}</td>
                             <td>${new Date(prospect.payment_deadline).toLocaleDateString()}</td>
                             <td>
+                                <button onclick="showProspect(${prospect.id})" class="btn btn-success btn-sm">Show</button>
                                 <button onclick="editProspect(${prospect.id})"class="btn btn-info btn-sm">Edit</button>
                                 <button onclick="deleteProspect(${prospect.id})" class="btn btn-danger btn-sm">Delete</button>
                             </td>

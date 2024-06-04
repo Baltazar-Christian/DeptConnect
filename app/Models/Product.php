@@ -11,4 +11,10 @@ class Product extends Model
 
     protected $fillable = ['name', 'email', 'phone', 'address', 'description', 'price'];
 
+    // Define the many-to-many relationship with the Prospect model
+    public function prospects()
+    {
+        return $this->belongsToMany(Prospect::class, 'prospect_product', 'product_id', 'prospect_id');
+    }
+
 }
